@@ -12,7 +12,7 @@ const Login: FC = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-xs-12 xs-middle">
             <UserLogin />
           </div>
         </div>

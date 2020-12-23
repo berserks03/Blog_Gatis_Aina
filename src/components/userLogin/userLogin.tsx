@@ -3,13 +3,19 @@ import './userLogin.scss';
 
 export const UserLogin: FC = () => {
   return (
-    <div className='UserLogin'>
+    <div className="UserLogin">
       <h1>Login Form</h1>
-      <div>User Name</div>
-      <input type="text" name="" id="" />
-      <div>Password</div>
-      <input type="password" name="" id="" />
-      <button type="submit">Login</button>
+      <div>
+        <label htmlFor="username">Username</label>
+        <input type="text" id="username" placeholder="username" />
+      </div>
+      <div>
+        <label htmlFor="password">Password</label>
+        <input type="password" id="password" placeholder="password" />
+      </div>
+      <button type="submit" className="UserLogin__button">
+        Login
+      </button>
     </div>
   );
 };
