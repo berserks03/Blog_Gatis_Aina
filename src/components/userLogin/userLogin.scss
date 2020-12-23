@@ -1,0 +1,45 @@
+$white: #ffff;
+$gray: #e8eceb;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+.UserLogin > * {
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 300px;
+  min-width: 250px;
+  margin: 5px;  
+}
+
+label {
+  cursor: pointer;
+}
+
+.UserLogin__button {
+  display: block;
+  cursor: pointer;
+  background-color: $blue;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 15px 5px;
+
+  &:hover {
+    @include transition(background-color 0.3s ease);
+    background-color: $brown;
+  }
+}
