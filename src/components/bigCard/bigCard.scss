@@ -1,0 +1,90 @@
+$white: #ffff;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+.BigCard {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  background-color: $white;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 300px;
+  min-width: 250px;
+  margin: 10px;
+  cursor: pointer;
+
+  &:hover .BigCard__title {
+    @include transition(color 0.3s ease);
+    color: $brown;
+  }
+
+  &:hover .BigCard__image {
+    @include transition(opacity 0.3s ease);
+    opacity: 0.7;
+  }
+}
+
+.BigCard__image {
+  @include transition(opacity 0.3s ease);
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.BigCard__post {
+  padding: 10px;
+}
+
+.BigCard__title {
+  @include transition(color 0.3s ease);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  color: $blue;
+  text-transform: uppercase;
+  padding: 0 10px;
+}
+
+.BigCard__body {
+  padding: 0 10px;
+}
+
+.BigCard__footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  padding-top: 15px;
+  border-top: 1px solid $brown;
+}
+
+.BigCard__author {
+  color: $darkBlue;
+  font-size: 0.875rem;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.BigCard__button {
+  cursor: pointer;
+  background-color: $blue;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+
+  &:hover {
+    @include transition(background-color 0.3s ease);
+    background-color: $brown;
+  }
+}
