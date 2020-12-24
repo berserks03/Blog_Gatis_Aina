@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { BigCard } from '../components/bigCard/bigCard';
+import { Search } from '../components/search/search';
 
 type Article = {
   id: number;
@@ -44,9 +45,9 @@ const Home: FC = () => {
   return (
     <section>
       <div className="container">
-        <div className="row center-xs margin-bottom--24">
+        <div className="row end-xs margin-bottom--24">
           <div className="col-xs-12">
-            <h1>This is home page</h1>
+            <Search /> 
           </div>
         </div>
         <div className="row">
