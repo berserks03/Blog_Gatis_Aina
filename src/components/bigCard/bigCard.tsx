@@ -8,7 +8,12 @@ type BigCardProps = {
   clickHandler: () => void;
 };
 
-export const BigCard: FC<BigCardProps> = ({ title, body, author, clickHandler }) => {
+export const BigCard: FC<BigCardProps> = ({
+  title,
+  body,
+  author,
+  clickHandler
+}) => {
   return (
     <div className="BigCard">
       <div>
