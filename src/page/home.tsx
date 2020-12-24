@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { BigCard } from '../components/bigCard/bigCard';
+import { Search } from '../components/search/search';
 
 type Article = {
   id: number;
@@ -51,6 +52,11 @@ const Home: FC = () => {
   return (
     <section>
       <div className="container">
+        <div className="row end-xs margin-bottom--24">
+          <div className="col-xs-12">
+            <Search /> 
+          </div>
+        </div>
         <div className="row">
           <div className="col-xs-12">
             <div className="card-section">

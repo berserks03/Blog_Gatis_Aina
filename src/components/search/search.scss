@@ -9,23 +9,16 @@ $shadow: rgba(0, 0, 0, 0.2);
   transition: $args;
 }
 
-.UserLogin > * {
-  display: flex;
-  flex-direction: column;
+.Search > * {
+  
   background-color: $white;
   border-radius: 3px;
   overflow: hidden;
-  max-width: 150px;
-  
+  min-height:40px ;
   margin: 5px;  
 }
 
-label {
-  cursor: pointer;
-}
-
-.UserLogin__button {
-  display: block;
+.Search__button {  
   cursor: pointer;
   background-color: $blue;
   box-shadow: 0 0.1875rem 1.5rem $shadow;
