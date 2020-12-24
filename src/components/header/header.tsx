@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Nav } from '../nav/nav';
+import logo from '../../assets/blog_logo.png';
 import './header.scss';
 
 
@@ -12,7 +13,7 @@ export const Header: FC = () => {
         <div className="row middle-xs">
           <div className="col-xs-2">
             <img
-              src="https://i.dlpng.com/static/png/6592098_preview.png"
+              src={logo}
               alt=""
               width="100"
             />
@@ -20,7 +21,7 @@ export const Header: FC = () => {
           <div className="col-xs-8">
             <Nav />
           </div>
-          <div className="col-xs-2">
+          <div className="col-xs-1 col-xs-offset-1">
             <h4>Login</h4>
           </div>
         </div>

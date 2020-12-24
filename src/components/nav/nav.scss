@@ -1,3 +1,14 @@
+$white: #ffff;
+$gray: #e8eceb;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
 .nav {
     display: flex;
     justify-content: center;
@@ -5,6 +16,8 @@
     text-decoration: none;
     text-transform: uppercase;
     font-size: 20px;
+    font-weight: bold;
+    color: $darkBlue;
     transition: color 0.2s;
   
     &:last-child {
@@ -12,10 +25,10 @@
     }
   
     &:hover {
-      color: red;
+      color: $brown;
     }
   }
   
   .selected {
-    font-weight: bold;
+    color: $brown;
   }

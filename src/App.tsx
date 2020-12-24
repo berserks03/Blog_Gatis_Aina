@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './page/home';
 import Login from './page/login';
+import Articles from './page/articles';
 import { Header } from './components/header/header';
 
 const App: FC = () => {
@@ -11,6 +12,9 @@ const App: FC = () => {
       <Switch>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/articles/:id">
+          <Articles />
         </Route>
         <Route path="/">
           <Home />

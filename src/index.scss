@@ -1,3 +1,14 @@
+$white: #ffff;
+$gray: #e8eceb;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -36,4 +47,3 @@ code {
 .margin-bottom--24 {
   margin-bottom: 24px;
 }
-

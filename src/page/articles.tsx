@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
-import { BigCard } from '../components/bigCard/bigCard';
-import { Search } from '../components/search/search';
+import { useParams } from 'react-router-dom';
+import { BlogArticle } from '../components/article/blogArticle';
 
-type Article = {
+type ArticleType = {
   id: number;
   userId: number;
   title: string;
@@ -12,7 +11,7 @@ type Article = {
   comments: [];
 };
 
-const articles: Article[] = [
+const articles: ArticleType[] = [
   {
     userId: 1,
     id: 1,
@@ -42,37 +41,19 @@ const articles: Article[] = [
   },
 ];
 
-const Home: FC = () => {
-  const history = useHistory();
-
-  const readMoreHandler = (id: number) => {
-    history.push(`articles/${String(id)}`);
-  };
+const Article: FC = () => {
+  const { id } = useParams<{ id: string }>();
 
   return (
     <section>
-      <div className="container">
-        <div className="row end-xs margin-bottom--24">
-          <div className="col-xs-12">
-            <Search /> 
-          </div>
-        </div>
+      <div className="container-fluid">
         <div className="row">
           <div className="col-xs-12">
-            <div className="card-section">
-              {articles.map(({ id, title, body, name }) => {
-                return (
-                  <div key={id}>
-                    <BigCard
-                      title={title}
-                      body={body}
-                      author={name}
-                      clickHandler={() => readMoreHandler(id)}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            <BlogArticle
+              id={articles[Number(id)].id}
+              title={articles[Number(id)].title}
+              body={articles[Number(id)].body}
+            />
           </div>
         </div>
       </div>
@@ -80,4 +61,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default Article;
