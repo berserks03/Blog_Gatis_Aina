@@ -1,8 +1,7 @@
 import React, { FC } from 'react';
-import { useHistory } from 'react-router-dom';
-import { BigCard } from '../components/bigCard/bigCard';
+import { useParams } from 'react-router-dom';
 
-type Article = {
+type ArticleType = {
   id: number;
   userId: number;
   title: string;
@@ -11,7 +10,7 @@ type Article = {
   comments: [];
 };
 
-const articles: Article[] = [
+const articles: ArticleType[] = [
   {
     userId: 1,
     id: 1,
@@ -41,37 +40,40 @@ const articles: Article[] = [
   },
 ];
 
-const Home: FC = () => {
-  const history = useHistory();
-
-  const readMoreHandler = (id: number) => {
-    history.push(`articles/${String(id)}`);
-  };
+const Article: FC = () => {
+  const { id } = useParams<{ id: string }>();
 
   return (
     <section>
-      <div className="container">
-        <div className="row">
+      <div className="container-fluid">
+        <div className="row center-xs">
           <div className="col-xs-12">
-            <div className="card-section">
-              {articles.map(({ id, title, body, name }) => {
-                return (
-                  <div key={id}>
-                    <BigCard
-                      title={title}
-                      body={body}
-                      author={name}
-                      clickHandler={() => readMoreHandler(id)}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            <h3 className="article__heading">
+              Article <span className="article__heading__number">#{articles[Number(id)].id}</span>
+            </h3>
+            <hr className="article__line" />
+            <p className="article__date">
+              18<sup>th</sup> December, 2020
+            </p>
           </div>
         </div>
       </div>
+      <div className="row center-xs">
+        <div className="col-xs-10 col-md-8">
+          <div>
+            <h1 className="article__title">{articles[Number(id)].title}</h1>
+          </div>
+          <img className="article__image" src="https://picsum.photos/800/300" alt="" />
+        </div>
+      </div>
+      <div className="row center-xs">
+        <div className="col-xs-10 col-md-6">
+          <p className="article__text">{articles[Number(id)].body.repeat(8)}.</p>
+        </div>
+      </div>
+      <hr className="article__line second" />
     </section>
   );
 };
 
-export default Home;
+export default Article;
