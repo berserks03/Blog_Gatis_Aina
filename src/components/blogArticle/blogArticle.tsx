@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './blogArticle.scss';
 
 type BlogArticleProps = {
-  id: number
+  id: number;
   title: string;
   body: string;
 };
