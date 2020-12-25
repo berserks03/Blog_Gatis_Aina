@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import './blogArticle.scss';
 
 type BlogArticleProps = {
-  id: number
-  title: string;
-  body: string;
+  id: number | undefined;
+  title: string | undefined;
+  body: string | undefined;
 };
 
 export const BlogArticle: FC<BlogArticleProps> = ({
@@ -37,7 +37,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       </div>
       <div className="row center-xs">
         <div className="col-xs-10 col-md-6">
-          <p className="article__text">{body.repeat(8)}.</p>
+          <p className="article__text">{body?.repeat(8)}.</p>
         </div>
       </div>
       <hr className="article__line second" />
