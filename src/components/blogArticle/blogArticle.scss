@@ -9,64 +9,96 @@ $shadow: rgba(0, 0, 0, 0.2);
 }
 
 .article__heading {
-    font-size: 36px;
-    font-weight: 500;
-    margin-bottom: 30px;
-  }
-  
-  .article__heading__number {
-    padding: 10px 15px;
-    background-color: $brown;
-    color: $white;
-    border-radius: 50%;
-  }
-  
-  .article__line {
-    width: 50%;
-    border-top: 2px solid $blue;
-    background-color: $blue; 
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
 
-    &.second {
-      width: 75%;
-      border-top: 2px solid $brown;
-      background-color: $brown;
-    }
+.article__heading__number {
+  padding: 5px 10px;
+  line-height: 1;
+  background-color: $brown;
+  color: $white;
+  border-radius: 18px;
+}
+
+.article__line {
+  width: 50%;
+  border-top: 2px solid $blue;
+  background-color: $blue;
+  margin-bottom: 16px;
+
+  &.second {
+    width: 75%;
+    border-top: 2px solid $brown;
+    background-color: $brown;
   }
-  
-  .article__date {
-    font-style: italic;
+}
+
+.article__date {
+  font-style: italic;
+}
+
+.article__title {
+  font-size: 50px;
+  color: $darkBlue;
+  margin: 20px 0;
+
+  &::first-letter {
+    text-transform: capitalize;
   }
-  
-  .article__title {
-    font-size: 50px;
-    color: $darkBlue;
-    margin: 20px 0;
-  
-    &::first-letter {
-      text-transform: capitalize;
-    }
-  }
-  
-  .article__image {
-    width: 100%;
-    border-radius: 3px;
-    box-shadow: 0 0.1875rem 1.5rem $shadow;
+
+  &.second {
+    font-size: 24px;
     margin-bottom: 30px;
   }
-  
-  .article__text {
-    text-align: justify;
-    margin-bottom: 20px;
-  
-    &::first-line {
-      text-indent: 3em;
-    }
-  
-    &::first-letter {
-      text-transform: capitalize;
-      font-size: 50px;
-      line-height: 1;
-      color: $darkBlue;
-    }
+}
+
+.article__image {
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  margin-bottom: 30px;
+}
+
+.article__text {
+  text-align: justify;
+  margin-bottom: 20px;
+
+  &::first-line {
+    text-indent: 3em;
   }
-  
+
+  &::first-letter {
+    text-transform: capitalize;
+    font-size: 50px;
+    line-height: 1;
+    color: $darkBlue;
+  }
+}
+
+.BigCard__button {
+  cursor: pointer;
+  background-color: $blue;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin-bottom: 8px;
+
+  &:hover {
+    @include transition(background-color 0.3s ease);
+    background-color: $brown;
+  }
+}
+
+.little-card-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
