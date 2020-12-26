@@ -11,13 +11,14 @@ $shadow: rgba(0, 0, 0, 0.2);
 .BigCard {
   display: flex;
   flex-direction: column;
-  align-items: space-between;
+  justify-content: space-between;
   background-color: $white;
   box-shadow: 0 0.1875rem 1.5rem $shadow;
   border-radius: 3px;
   overflow: hidden;
   max-width: 300px;
   min-width: 250px;
+  min-height: 570px;
   margin: 10px;
   cursor: pointer;
 
