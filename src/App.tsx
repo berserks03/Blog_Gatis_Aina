@@ -1,11 +1,19 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './page/home';
 import Login from './page/login';
 import Articles from './page/articles';
 import { Header } from './components/header/header';
+import { getArticles } from './store/articlesReducer/articlesActions';
 
 const App: FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getArticles());
+  }, [dispatch]);
+
   return (
     <Router>
       <Header />
