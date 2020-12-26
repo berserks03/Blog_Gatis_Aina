@@ -6,11 +6,10 @@ import { BigCard } from '../components/bigCard/bigCard';
 import { Search } from '../components/search/search';
 
 const Home: FC = () => {
-  
-  const articles = useSelector((state: RootState) => {
-    return state.articlesArray;
+  const blog = useSelector((state: RootState) => {
+    return state.articlesArray.articles;
   });
-  
+
   const history = useHistory();
 
   const readMoreHandler = (id: number) => {
@@ -22,24 +21,25 @@ const Home: FC = () => {
       <div className="container">
         <div className="row end-xs margin-bottom--24">
           <div className="col-xs-12">
-            <Search /> 
+            <Search />
           </div>
         </div>
         <div className="row">
           <div className="col-xs-12">
             <div className="card-section">
-              {articles.map(({ id, title, body }) => {
-                return (
-                  <div key={id}>
-                    <BigCard
-                      title={title}
-                      body={body}
-                      // author={name}
-                      clickHandler={() => readMoreHandler(id)}
-                    />
-                  </div>
-                );
-              })}
+              {blog &&
+                blog?.map(({ id, title, body }) => {
+                  return (
+                    <div key={id}>
+                      <BigCard
+                        title={title}
+                        body={body}
+                        // author={name}
+                        clickHandler={() => readMoreHandler(id)}
+                      />
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

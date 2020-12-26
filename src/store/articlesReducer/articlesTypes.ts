@@ -7,9 +7,15 @@ export type ArticleType = {
   body: string;
 };
 
+export type InitialState = {
+  articles: ArticleType[];
+};
+
 export type AddArticles = {
   type: typeof ADD_ARTICLES;
   articles: ArticleType;
 };
 
-export type AllActions = AddArticles;
+export interface AllActions extends InitialState {
+  type: typeof ADD_ARTICLES;
+}

@@ -8,18 +8,15 @@ type BigCardProps = {
   clickHandler: () => void;
 };
 
-export const BigCard: FC<BigCardProps> = ({
-  title,
-  body,
-  clickHandler
-}) => {
+export const BigCard: FC<BigCardProps> = ({ title, body, clickHandler }) => {
   return (
     <div className="BigCard">
       <div>
         <img src="https://picsum.photos/300" alt={title} className="BigCard__image" />
+
+        <h3 className="BigCard__title">{title.toString().split(' ').splice(1, 5).join(' ')}</h3>
+        <p className="BigCard__body">{body.toString().substring(0, 90).concat('...')}</p>
       </div>
-      <h3 className="BigCard__title">{title.toString().split(' ').splice(1, 3).join(' ')}</h3>
-      <p className="BigCard__body">{body.toString().substring(0, 90).concat('...')}</p>
       <div className="BigCard__footer">
         <p className="BigCard__author">By: author </p>
         <button type="button" className="BigCard__button" onClick={clickHandler}>

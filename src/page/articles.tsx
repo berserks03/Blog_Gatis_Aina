@@ -8,11 +8,11 @@ const Article: FC = () => {
   const { id } = useParams<{ id: string }>();
   const articleNum: number = Number(id);
 
-  const articles = useSelector((state: RootState) => {
-    return state.articlesArray;
+  const blog = useSelector((state: RootState) => {
+    return state.articlesArray.articles;
   });
 
-  const article = articles.find((item) => item.id === articleNum);
+  const article = blog.find((item) => item.id === articleNum);
 
   return (
     <section>
