@@ -1,0 +1,51 @@
+$white: #ffff;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+.LittleCard {
+  display: flex;
+  justify-content: flex-start;
+  background-color: $white;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 310px;
+  min-width: 200px;
+  margin-bottom: 30px;
+  cursor: pointer;
+
+  &:hover .LittleCard__title {
+    @include transition(color 0.3s ease);
+    color: $brown;
+  }
+
+  &:hover .LittleCard__image {
+    @include transition(opacity 0.3s ease);
+    opacity: 0.7;
+  }
+}
+
+.LittleCard__image {
+    @include transition(opacity 0.3s ease);
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+.LittleCard__title {
+    @include transition(color 0.3s ease);
+    font-size: 1rem;
+    line-height: 1.4;
+    color: $darkBlue;
+    padding-right: 10px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+}

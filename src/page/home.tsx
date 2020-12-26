@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { RootState } from '../store';
@@ -6,6 +6,11 @@ import { BigCard } from '../components/bigCard/bigCard';
 import { Search } from '../components/search/search';
 
 const Home: FC = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const blog = useSelector((state: RootState) => {
     return state.articlesArray.articles;
   });
