@@ -6,12 +6,17 @@ import Login from './page/login';
 import Articles from './page/articles';
 import { Header } from './components/header/header';
 import { getArticles } from './store/articlesReducer/articlesActions';
+import { getComments } from './store/commentsReducer/commentsActions';
 
 const App: FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getArticles());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getComments());
   }, [dispatch]);
 
   return (
