@@ -3,23 +3,35 @@ import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { BlogArticle } from '../components/blogArticle/blogArticle';
+import { CommentType } from '../store/commentsReducer/commentsTypes';
 
 const Article: FC = () => {
-  
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  const articleNum: number = Number(id);
-
   const blog = useSelector((state: RootState) => {
     return state.articlesArray.articles;
   });
 
+  const blogComments = useSelector((state: RootState) => {
+    return state.commentsArray.comments;
+  });
+
+  const articleNum: number = Number(id);
+
   const article = blog.find((item) => item.id === articleNum);
 
+  const articleComments: CommentType[] = [];
+
+  blogComments.forEach((item) => {
+    if (item.postId === articleNum) {
+      articleComments.push(item);
+    }
+  });
+  
   const moreBlogArray = [];
 
   for (let i = 1; i <= 3; i++) {
@@ -37,6 +49,7 @@ const Article: FC = () => {
               title={article?.title}
               body={article?.body}
               blogArray={moreBlogArray}
+              articleComments={articleComments}
             />
           </div>
         </div>

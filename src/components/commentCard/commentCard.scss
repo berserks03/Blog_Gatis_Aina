@@ -1,0 +1,52 @@
+$white: #ffff;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+.CommentCard {
+  display: flex;
+  background-color: $white;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.CommentCard__image-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.CommentCard__image {
+  display: block;
+  width: 30%;
+  object-fit: cover;
+  padding: 5px;
+  border-radius: 50%;
+  border: 3px solid $blue;
+}
+
+.CommentCard__title {
+  font-size: 1.2rem;
+  color: $darkBlue;
+  padding-right: 10px;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
+}
+
+.CommentCard__text {
+  text-align: justify;
+
+  &::first-letter {
+    text-transform: capitalize;
+    line-height: 1;
+    color: $darkBlue;
+  }
+}
