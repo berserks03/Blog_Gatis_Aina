@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ArticleType } from '../../store/articlesReducer/articlesTypes';
+import { CommentType } from '../../store/commentsReducer/commentsTypes';
+import { CommentCard } from '../commentCard/commentCard';
 import { LittleCard } from '../littleCard/littleCard';
 import './blogArticle.scss';
 
@@ -9,15 +11,16 @@ type BlogArticleProps = {
   title: string | undefined;
   body: string | undefined;
   blogArray: ArticleType[];
+  articleComments: CommentType[];
 };
 
 export const BlogArticle: FC<BlogArticleProps> = ({
   id,
   title,
   body,
-  blogArray
+  blogArray,
+  articleComments,
 }) => {
-
   const history = useHistory();
 
   const backButtonClickHandler = () => {
@@ -89,6 +92,21 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       <div className="row center-xs">
         <div className="col-xs-12">
           <h2 className="article__title second">LET'S TALK ABOUT THIS ARTICLE</h2>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-12">
+          {articleComments.map((item) => {
+            return (
+              <div key={item.id}>
+                <CommentCard
+                  name={item.name}
+                  email={item.email}
+                  body={item.body}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
