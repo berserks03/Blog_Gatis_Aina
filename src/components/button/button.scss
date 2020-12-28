@@ -1,0 +1,28 @@
+$white: #ffff;
+$gray: #e8eceb;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: $blue;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 700;
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+
+  &:hover {
+    @include transition(background-color 0.3s ease);
+    background-color: $brown;
+  }
+}

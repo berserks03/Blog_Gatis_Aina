@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import './bigCard.scss';
+import Button from '../button/button';
 
 type BigCardProps = {
   title: string;
@@ -17,10 +18,8 @@ export const BigCard: FC<BigCardProps> = ({ title, body, clickHandler }) => {
         <p className="BigCard__body">{body.toString().substring(0, 90).concat('...')}</p>
       </div>
       <div className="BigCard__footer">
-        <p className="BigCard__author">By: author </p>
-        <button type="button" className="BigCard__button" onClick={clickHandler}>
-          Read more
-        </button>
+        <p className="BigCard__author">By: author </p>        
+        <Button className='BigCard__button' onClick={clickHandler} text='Read more' />
       </div>
     </div>
   );
