@@ -16,6 +16,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 
 .article__heading__number {
   padding: 5px 10px;
+  font-weight: 700;
   line-height: 1;
   background-color: $brown;
   color: $white;
@@ -42,7 +43,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 .article__title {
   font-size: 50px;
   color: $darkBlue;
-  margin: 20px 0;
+  margin: 30px 0;
 
   &::first-letter {
     text-transform: capitalize;
@@ -50,7 +51,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 
   &.second {
     font-size: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
 }
 

@@ -1,0 +1,42 @@
+$white: #ffff;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$red: #FF0000;
+$shadow: rgba(0, 0, 0, 0.2);
+
+.CommentInput {
+    background-color: $darkBlue;
+    color: $white;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.CommentInput__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.CommentInput__input {
+    width: 300px;
+    max-width: 300px;
+    margin-bottom: 20px;
+    min-height: 30px;
+    outline: none;
+    color: $darkBlue;
+    font-size: 1em;
+    font-family: 'Nunito', sans-serif;
+
+    &::placeholder {
+        color: $darkBlue;
+        font-size: 1em;
+        font-family: 'Nunito', sans-serif;
+    }
+}
+
+.CommentInput__error-message {
+    color: $red;
+}
