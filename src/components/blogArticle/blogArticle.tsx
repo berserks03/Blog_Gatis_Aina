@@ -3,7 +3,9 @@ import { useHistory } from 'react-router-dom';
 import { ArticleType } from '../../store/articlesReducer/articlesTypes';
 import { CommentType } from '../../store/commentsReducer/commentsTypes';
 import { CommentCard } from '../commentCard/commentCard';
+import { CommentInput } from '../commentInput/commentInput';
 import { LittleCard } from '../littleCard/littleCard';
+import { getRandomDate } from '../../helperFunctions/dateHelper';
 import './blogArticle.scss';
 
 type BlogArticleProps = {
@@ -31,6 +33,8 @@ export const BlogArticle: FC<BlogArticleProps> = ({
     history.push(`/articles/${String(ident)}`);
   };
 
+  const date = getRandomDate();
+
   return (
     <div className="BlogArticle">
       <div className="container-fluid">
@@ -41,7 +45,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
             </h3>
             <hr className="article__line" />
             <p className="article__date">
-              18<sup>th</sup> December, 2020
+              {date}
             </p>
           </div>
         </div>
@@ -107,6 +111,14 @@ export const BlogArticle: FC<BlogArticleProps> = ({
               </div>
             );
           })}
+        </div>
+      </div>
+      <div className="row center-xs">
+        <div className="col-xs-12">
+          <CommentInput
+            postId={id}
+            currentCommentArrayLength={articleComments.length}
+          />
         </div>
       </div>
     </div>

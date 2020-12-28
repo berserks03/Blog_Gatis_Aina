@@ -1,4 +1,4 @@
-import { CommentType, ADD_COMMENTS, AllActions } from './commentsTypes';
+import { CommentType, ADD_COMMENTS, ADD_USER_COMMENTS, AllActions } from './commentsTypes';
 
 export const initialState: { comments: CommentType[] } = {
   comments: [],
@@ -10,6 +10,12 @@ export const commentsArray = (state = initialState, action: AllActions) => {
       return {
         ...state,
         comments: action.comments,
+      };
+    }
+    case ADD_USER_COMMENTS: {
+      return {
+        ...state,
+        comments: state.comments.concat(action.comments),
       };
     }
     default:
