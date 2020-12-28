@@ -10,29 +10,10 @@ $shadow: rgba(0, 0, 0, 0.2);
 }
 
 .Search > * {
-  
-  background-color: $white;
-  border-radius: 3px;
   overflow: hidden;
-  min-height:40px ;
-  margin: 5px;  
+  min-height: 40px;
 }
 
-.Search__button {  
-  cursor: pointer;
-  background-color: $blue;
-  box-shadow: 0 0.1875rem 1.5rem $shadow;
-  color: $white;
-  text-transform: uppercase;
-  font-weight: 700;
-  outline: none;
-  border: none;
-  border-radius: 3px;
-  padding: 10px;
+.Search__button {
   margin: 15px 5px;
-
-  &:hover {
-    @include transition(background-color 0.3s ease);
-    background-color: $brown;
-  }
 }
