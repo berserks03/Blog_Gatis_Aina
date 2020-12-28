@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import './userLogin.scss';
+import Button from '../button/button';
 
 export const UserLogin: FC = () => {
   return (
@@ -12,10 +13,8 @@ export const UserLogin: FC = () => {
       <div>
         <label htmlFor="password">Password</label>
         <input type="password" id="password" placeholder="password" />
-      </div>
-      <button type="submit" className="UserLogin__button">
-        Login
-      </button>
+      </div>      
+      <Button className="UserLogin__button" text="Login" />
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ArticleType } from '../../store/articlesReducer/articlesTypes';
 import { CommentType } from '../../store/commentsReducer/commentsTypes';
+import Button from '../button/button';
 import { CommentCard } from '../commentCard/commentCard';
 import { LittleCard } from '../littleCard/littleCard';
 import './blogArticle.scss';
@@ -62,9 +63,11 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       <div className="row center-xs">
         <div className="col-xs-12">
           <hr className="article__line second" />
-          <button type="button" className="BigCard__button" onClick={backButtonClickHandler}>
-            Go Back
-          </button>
+          <Button 
+            className="BigCard__button" 
+            onClick={backButtonClickHandler} 
+            text="Go Back" 
+          />
           <hr className="article__line second" />
         </div>
       </div>
@@ -79,9 +82,9 @@ export const BlogArticle: FC<BlogArticleProps> = ({
             {blogArray.map((item) => {
               return (
                 <div key={item.id}>
-                  <LittleCard
-                    title={item.title}
-                    clickHandler={() => readMoreHandler(item.id)}
+                  <LittleCard 
+                    title={item.title} 
+                    clickHandler={() => readMoreHandler(item.id)} 
                   />
                 </div>
               );
@@ -99,10 +102,10 @@ export const BlogArticle: FC<BlogArticleProps> = ({
           {articleComments.map((item) => {
             return (
               <div key={item.id}>
-                <CommentCard
-                  name={item.name}
-                  email={item.email}
-                  body={item.body}
+                <CommentCard 
+                  name={item.name} 
+                  email={item.email} 
+                  body={item.body} 
                 />
               </div>
             );
