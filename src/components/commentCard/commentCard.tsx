@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import Button from '../button/button';
 import './commentCard.scss';
 
 type CommentCardProps = {
@@ -23,9 +24,10 @@ export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
                 </span>{' '}
                 {email}
               </p>
-              <button type="button" className="BigCard__button">
-                Follow
-              </button>
+              <Button
+                className=".btn"
+                text="follow"
+              />
             </div>
           </div>
           <div className="col-xs-9">
