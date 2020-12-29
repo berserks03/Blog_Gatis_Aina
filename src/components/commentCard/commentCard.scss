@@ -1,4 +1,5 @@
 $white: #ffff;
+$gray: #e8eceb;
 $blue: #8cbdb9;
 $brown: #e09e50;
 $darkBlue: #2d3e4e;
@@ -11,7 +12,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   overflow: hidden;
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   padding: 20px;
 }
 
@@ -31,18 +32,40 @@ $shadow: rgba(0, 0, 0, 0.2);
   border: 3px solid $blue;
 }
 
-.CommentCard__title {
-  font-size: 1.2rem;
-  color: $darkBlue;
-  padding-right: 10px;
+.CommentCard__author {
+  font-size: 1.5rem;
+  color: $brown;
+  margin: 0;
 
   &::first-letter {
     text-transform: capitalize;
   }
 }
 
+.CommentCard__date {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: $gray;
+}
+
+
+.CommentCard__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: $darkBlue;
+  
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
 .CommentCard__text {
   text-align: justify;
+  border: 3px solid $blue;
+  border-radius: 3px;
+  padding: 10px;
 
   &::first-letter {
     text-transform: capitalize;
