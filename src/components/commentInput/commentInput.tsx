@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import Button from '../button/button';
 import { AddUserComments } from '../../store/commentsReducer/commentsActions';
 import './commentInput.scss';
 
@@ -87,9 +88,11 @@ export const CommentInput: FC<CommentInputProps> = ({
                 onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
                   setUserComment(ev.target.value)}
               />
-              <button type="button" className="BigCard__button" onClick={submitCommentHandler}>
-                Add comment
-              </button>
+              <Button
+                className=".btn"
+                text="Add comment"
+                onClick={submitCommentHandler}
+              />
             </form>
           </div>
         </div>
