@@ -46,6 +46,11 @@ label {
 
 .UserLogin__button--register {
   display: inline;
-  margin-left: 5px;
   background-color: $darkBlue;
+  margin-left:  5px;
+  font-weight: 400;
+  font-size: 9px;
+  padding: 5px;
+  box-shadow: none;
+  border-radius: 10px;
 }
