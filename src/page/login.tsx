@@ -1,7 +1,18 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { UserLogin } from '../components/userLogin/userLogin';
+import { RootState } from '../store';
 
 const Login: FC = () => {
+
+  const usersOnline = useSelector((state: RootState) => {
+    return state.loginReducer.users;
+  });
+
+  console.log('login page', usersOnline);
+
+  // const userOnline = usersOnline.find((item) => item.online === true);
+
   return (
     <section>
       <div className="container">
