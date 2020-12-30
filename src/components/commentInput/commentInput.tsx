@@ -23,14 +23,12 @@ export const CommentInput: FC<CommentInputProps> = ({
   const dispatch = useDispatch();
 
   const submitCommentHandler = () => {
-    if (!userEmail ) {
-      setNoUserEmail(true);
-    } else if (!userTitle) {
-      setNoUserTitle(true);
-    } else if (!userComment) {
-      setNoUserComment(true);
-    } else if (userTitle && userEmail && userComment) {
-      
+    !userEmail ? setNoUserEmail(true) : setNoUserEmail(false);
+    !userTitle ? setNoUserTitle(true) : setNoUserTitle(false);
+    !userComment ? setNoUserComment(true) : setNoUserComment(false);
+
+    if (userTitle && userEmail && userComment) {
+
       const newComment = {
         postId,
         id: currentCommentArrayLength + 1,
