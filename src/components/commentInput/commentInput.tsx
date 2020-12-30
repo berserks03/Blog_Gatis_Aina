@@ -19,15 +19,21 @@ export const CommentInput: FC<CommentInputProps> = ({
   const [noUserTitle, setNoUserTitle] = useState(false);
   const [noUserEmail, setNoUserEmail] = useState(false);
   const [noUserComment, setNoUserComment] = useState(false);
+  const [emailWrong, setEmailWrong] = useState(false);
 
   const dispatch = useDispatch();
+
+  const pattern =
+    new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i);
 
   const submitCommentHandler = () => {
     !userEmail ? setNoUserEmail(true) : setNoUserEmail(false);
     !userTitle ? setNoUserTitle(true) : setNoUserTitle(false);
     !userComment ? setNoUserComment(true) : setNoUserComment(false);
 
-    if (userTitle && userEmail && userComment) {
+    !pattern.test(userEmail) ? setEmailWrong(true) : setEmailWrong(false);
+
+    if (userTitle && userEmail && userComment && emailWrong) {
 
       const newComment = {
         postId,
@@ -57,13 +63,13 @@ export const CommentInput: FC<CommentInputProps> = ({
             <h3>Join the discussion!</h3>
             <form action="submit_comment" className="CommentInput__form">
               {noUserEmail ? <span className="error-message">Email ir required!</span> : ''}
+              {emailWrong ? <span className="error-message">Please enter valid email address</span> : ''}
               <input
                 className="CommentInput__input"
                 type="email"
                 placeholder="Enter your email"
                 required
                 value={userEmail}
-                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                 onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                   setUserEmail(ev.target.value)}
               />
