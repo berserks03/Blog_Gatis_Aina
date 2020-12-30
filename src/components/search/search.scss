@@ -9,9 +9,32 @@ $shadow: rgba(0, 0, 0, 0.2);
   transition: $args;
 }
 
-.Search > * {
+.Search {
   overflow: hidden;
+  margin: 20px auto;
+}
+
+.Search__input {
   min-height: 40px;
+  min-width: 300px;
+  width: 50%;
+  border: 1px solid $darkBlue;
+  box-shadow: 0 0.1875rem 0.75rem $shadow;
+  border-radius: 3px;
+  margin: 10px;
+  outline: none;
+
+  &:focus {
+    border: 2px solid $darkBlue;
+    box-shadow: 0 0.1875rem 1rem $shadow;
+    border-radius: 3px;
+  }
+
+  &::placeholder {
+    color: $darkBlue;
+    font-size: 1em;
+    font-family: 'Nunito', sans-serif;
+  }
 }
 
 .Search__button {

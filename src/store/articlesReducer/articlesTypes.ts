@@ -1,4 +1,5 @@
 export const ADD_ARTICLES = 'ADD_ARTICLES';
+export const SEARCH_ARTICLES = 'SEARCH_ARTICLES';
 
 export type ArticleType = {
   userId: number;
@@ -6,6 +7,7 @@ export type ArticleType = {
   title: string;
   body: string;
 };
+
 
 export type InitialState = {
   articles: ArticleType[];

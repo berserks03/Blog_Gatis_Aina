@@ -13,9 +13,6 @@ const App: FC = () => {
 
   useEffect(() => {
     dispatch(getArticles());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(getComments());
   }, [dispatch]);
 

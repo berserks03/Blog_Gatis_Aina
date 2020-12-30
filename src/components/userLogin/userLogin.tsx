@@ -1,12 +1,9 @@
 import React, { FC, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { SetLoginState } from '../../store/logInReducer/logInActions';
 import './userLogin.scss';
 import Button from '../button/button';
 
 export const UserLogin: FC = () => {
 
-  const dispatch = useDispatch();
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
