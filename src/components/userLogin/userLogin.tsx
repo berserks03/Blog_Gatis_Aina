@@ -7,37 +7,82 @@ export const UserLogin: FC = () => {
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <div className="UserLogin">
-      <h1>Login Form</h1>
-      <div>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="username"
-          placeholder="username"
-          value={userName}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setUserName(ev.target.value)}
+    isLogin?
+      <div className="UserLogin">
+        <h1>Login Form</h1>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="username"
+            value={userName}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setUserName(ev.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="password"
+            value={password}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setPassword(ev.target.value)}
+          />
+        </div>      
+        <Button
+          className="UserLogin__button"
+          text="Login"
+          // onClick={() => dispatch(SetLoginState({ 'userName': userName, 'password': password }))}
         />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          id="password"
-          placeholder="password"
-          value={password}
-          onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
-            setPassword(ev.target.value)}
+        <span>Not registered?</span>
+        <Button 
+          className="UserLogin__button--register"
+          text='Click here'
+          onClick={()=>setIsLogin(!isLogin)}
+        /> 
+      </div> 
+      :      
+      <div className="UserLogin">
+        <h1>Register Form</h1>
+        <div>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="username"
+            value={userName}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setUserName(ev.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="text"
+            id="password"
+            placeholder="password"
+            value={password}
+            onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              setPassword(ev.target.value)}
+          />
+        </div>      
+        <Button
+          className="UserLogin__button"
+          text="Register"
+          // onClick={() => dispatch(SetLoginState({ 'userName': userName, 'password': password }))}
         />
-      </div>      
-      <Button
-        className="UserLogin__button"
-        text="Login"
-        // onClick={() => dispatch(SetLoginState({ 'userName': userName, 'password': password }))}
-      />
-    </div>
+        <span>Already registered?</span> 
+        <Button 
+          className="UserLogin__button--register"
+          text=' Click here'
+          onClick={()=>setIsLogin(!isLogin)}
+        />  
+      </div>   
   );
 };

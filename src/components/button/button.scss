@@ -26,3 +26,12 @@ $shadow: rgba(0, 0, 0, 0.2);
     background-color: $brown;
   }
 }
+
+.UserLogin__button--register {
+  font-weight: 400;
+  font-size: 9px;
+  padding: 5px;
+  box-shadow: none;
+  border-radius: 10px;
+  display: inline;
+}
