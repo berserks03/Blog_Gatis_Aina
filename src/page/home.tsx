@@ -84,8 +84,7 @@ const Home: FC = () => {
                   ) : (
                     <div>
                       <h1>
-                        Sorry, article with word:
-                        <span className="wrong-search-word"> {searchWord}</span> not found
+                        Sorry, article not found. Please try one more time!
                       </h1>
                     </div>
                   )}
