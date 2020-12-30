@@ -24,16 +24,20 @@ export const CommentInput: FC<CommentInputProps> = ({
   const dispatch = useDispatch();
 
   const pattern =
-    new RegExp(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i);
+    new RegExp(/^([a-zA-Z0-9_\-\\.]+)@([a-zA-Z0-9_\-\\.]+)\.([a-zA-Z]{2,5})$/i);
 
   const submitCommentHandler = () => {
     !userEmail ? setNoUserEmail(true) : setNoUserEmail(false);
     !userTitle ? setNoUserTitle(true) : setNoUserTitle(false);
     !userComment ? setNoUserComment(true) : setNoUserComment(false);
 
-    !pattern.test(userEmail) ? setEmailWrong(true) : setEmailWrong(false);
+    if (!pattern.test(userEmail)) {
+      setEmailWrong(true);
+      return;
+    }
 
-    if (userTitle && userEmail && userComment && emailWrong) {
+    if (userTitle && userEmail && userComment) {
+      setEmailWrong(false);
 
       const newComment = {
         postId,
