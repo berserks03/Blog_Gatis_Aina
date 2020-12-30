@@ -69,15 +69,14 @@ export const UserLogin: FC = () => {
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
             setUserPassword(ev.target.value)}
         />
-      </div>
-      <div>
-        <Button className="UserLogin__button" text="Login" onClick={loginClickHandler} />
-        <Button
-          className="UserLogin__button--register"
-          text="Not registered? Click here"
-          onClick={() => setIsLogin(!isLogin)}
-        />
-      </div>
+      </div>      
+      <Button className="UserLogin__button" text="Login" onClick={loginClickHandler} />
+      <span>Not registered?</span>
+      <Button
+        className="UserLogin__button--register"
+        text="Click here"
+        onClick={() => setIsLogin(!isLogin)}
+      />      
     </div>
   ) : (
     <div className="UserLogin">
@@ -105,15 +104,14 @@ export const UserLogin: FC = () => {
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
             setUserPassword(ev.target.value)}
         />
-      </div>
-      <div>
-        <Button className="UserLogin__button" text="Register" onClick={registerClickHandler} />
-        <Button 
-          className="UserLogin__button--register"
-          text='Already registered? Click here'
-          onClick={()=>setIsLogin(!isLogin)}
-        /> 
-      </div>
+      </div>      
+      <Button className="UserLogin__button" text="Register" onClick={registerClickHandler} />
+      <span>Already registered?</span>
+      <Button 
+        className="UserLogin__button--register"
+        text='Click here'
+        onClick={()=>setIsLogin(!isLogin)}
+      />       
     </div>
   );
 };
