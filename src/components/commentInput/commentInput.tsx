@@ -19,15 +19,25 @@ export const CommentInput: FC<CommentInputProps> = ({
   const [noUserTitle, setNoUserTitle] = useState(false);
   const [noUserEmail, setNoUserEmail] = useState(false);
   const [noUserComment, setNoUserComment] = useState(false);
+  const [emailWrong, setEmailWrong] = useState(false);
 
   const dispatch = useDispatch();
+
+  const pattern =
+    new RegExp(/^([a-zA-Z0-9_\-\\.]+)@([a-zA-Z0-9_\-\\.]+)\.([a-zA-Z]{2,5})$/i);
 
   const submitCommentHandler = () => {
     !userEmail ? setNoUserEmail(true) : setNoUserEmail(false);
     !userTitle ? setNoUserTitle(true) : setNoUserTitle(false);
     !userComment ? setNoUserComment(true) : setNoUserComment(false);
 
+    if (!pattern.test(userEmail)) {
+      setEmailWrong(true);
+      return;
+    }
+
     if (userTitle && userEmail && userComment) {
+      setEmailWrong(false);
 
       const newComment = {
         postId,
@@ -56,18 +66,18 @@ export const CommentInput: FC<CommentInputProps> = ({
           <div className="col-xs-12">
             <h3>Join the discussion!</h3>
             <form action="submit_comment" className="CommentInput__form">
-              {noUserEmail ? <span className="CommentInput__error-message">Email ir required!</span> : ''}
+              {noUserEmail ? <span className="error-message">Email ir required!</span> : ''}
+              {emailWrong ? <span className="error-message">Please enter valid email address</span> : ''}
               <input
                 className="CommentInput__input"
                 type="email"
                 placeholder="Enter your email"
                 required
                 value={userEmail}
-                pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                 onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                   setUserEmail(ev.target.value)}
               />
-              {noUserTitle ? <span className="CommentInput__error-message">Short title ir required!</span> : ''}
+              {noUserTitle ? <span className="error-message">Short title ir required!</span> : ''}
               <input
                 className="CommentInput__input"
                 type="text"
@@ -77,7 +87,7 @@ export const CommentInput: FC<CommentInputProps> = ({
                 onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                   setUserTitle(ev.target.value)}
               />
-              {noUserComment ? <span className="CommentInput__error-message">Comment ir required!</span> : ''}
+              {noUserComment ? <span className="error-message">Comment ir required!</span> : ''}
               <textarea
                 className="CommentInput__input"
                 placeholder="Write your comment"
