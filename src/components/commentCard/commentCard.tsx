@@ -14,7 +14,7 @@ export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
     <div className="CommentCard">
       <div className="container">
         <div className="row middle-xs">
-          <div className="col-xs-3">
+          <div className="col-xs-12 col-md-3">
             <div className="CommentCard__image-wrapper">
               <img src="https://picsum.photos/300" alt={name} className="CommentCard__image" />
               <p>
@@ -30,7 +30,7 @@ export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
               />
             </div>
           </div>
-          <div className="col-xs-9">
+          <div className="col-xs-12 col-md-9">
             <h3 className="CommentCard__author">
               {email.split('@')[0].replace(/[\W_]/, ' ')}
             </h3>
