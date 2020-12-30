@@ -83,12 +83,12 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       <div className="row">
         <div className="col-xs-12">
           <div className="little-card-section">
-            {blogArray.map((item) => {
+            {blogArray && blogArray.map((item) => {
               return (
-                <div key={item.id}>
+                <div key={item?.id}>
                   <LittleCard 
-                    title={item.title} 
-                    clickHandler={() => readMoreHandler(item.id)} 
+                    title={item?.title} 
+                    clickHandler={() => readMoreHandler(item?.id)} 
                   />
                 </div>
               );

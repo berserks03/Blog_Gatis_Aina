@@ -13,7 +13,7 @@ export type InitialState = {
   comments: CommentType[];
 };
 
-export type AddArticles = {
+export type AddComments = {
   type: typeof ADD_COMMENTS;
   comments: CommentType;
 };
