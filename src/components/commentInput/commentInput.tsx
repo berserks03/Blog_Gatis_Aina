@@ -87,7 +87,6 @@ export const CommentInput: FC<CommentInputProps> = ({
                   setUserComment(ev.target.value)}
               />
               <Button
-                className=".btn"
                 text="Add comment"
                 onClick={submitCommentHandler}
               />
