@@ -56,7 +56,7 @@ export const CommentInput: FC<CommentInputProps> = ({
           <div className="col-xs-12">
             <h3>Join the discussion!</h3>
             <form action="submit_comment" className="CommentInput__form">
-              {noUserEmail ? <span className="CommentInput__error-message">Email ir required!</span> : ''}
+              {noUserEmail ? <span className="error-message">Email ir required!</span> : ''}
               <input
                 className="CommentInput__input"
                 type="email"
@@ -67,7 +67,7 @@ export const CommentInput: FC<CommentInputProps> = ({
                 onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                   setUserEmail(ev.target.value)}
               />
-              {noUserTitle ? <span className="CommentInput__error-message">Short title ir required!</span> : ''}
+              {noUserTitle ? <span className="error-message">Short title ir required!</span> : ''}
               <input
                 className="CommentInput__input"
                 type="text"
@@ -77,7 +77,7 @@ export const CommentInput: FC<CommentInputProps> = ({
                 onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
                   setUserTitle(ev.target.value)}
               />
-              {noUserComment ? <span className="CommentInput__error-message">Comment ir required!</span> : ''}
+              {noUserComment ? <span className="error-message">Comment ir required!</span> : ''}
               <textarea
                 className="CommentInput__input"
                 placeholder="Write your comment"
