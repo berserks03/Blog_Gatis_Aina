@@ -25,7 +25,6 @@ export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
                 {email}
               </p>
               <Button
-                className=".btn"
                 text="follow"
               />
             </div>

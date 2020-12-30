@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './button.scss';
 
 type ButtonProps = {
-  className: string;
+  className?: string;
   onClick?: () => void;
   text?: string|(() => void)
 };
