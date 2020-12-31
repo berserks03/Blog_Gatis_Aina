@@ -15,12 +15,15 @@ $shadow: rgba(0, 0, 0, 0.2);
   border-radius: 50px;
 }
 
-.UserLogin > * {
+.UserLogin > div {
   display: flex;
   flex-direction: column;
-  border-radius: 3px;
   overflow: hidden;  
   text-align: left;
+}
+
+.UserLogin h1 {
+  text-align: center;
 }
 
 .UserLogin input {
@@ -28,6 +31,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   padding-left: 0.3vw;
   height: 2.5em;
   margin: 0.4vw 0;
+  text-indent: 5px;
 }
 
 label {
@@ -35,7 +39,18 @@ label {
 }
 
 .UserLogin__button {
+  margin: 15px 0;
   display: block;
-  margin: 15px 5px;
+  width: 100%;
 }
 
+.UserLogin__button--register {
+  display: inline;
+  background-color: $darkBlue;
+  margin-left:  5px;
+  font-weight: 400;
+  font-size: 9px;
+  padding: 5px;
+  box-shadow: none;
+  border-radius: 10px;
+}
