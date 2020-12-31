@@ -1,13 +1,10 @@
-import { SET_LOGIN_STATE } from './logInTypes';
+import { LoginUserType, ADD_ONLINE_USER } from './logInTypes';
 
-type LoginInputType = {
-  userName: string;
-  password: string;
-};
 
-export const SetLoginState = (logInData: LoginInputType) => {
+export const AddOnlineUser = (user: LoginUserType) => {
   return {
-    type: SET_LOGIN_STATE,
-    payload: logInData,
+    type: ADD_ONLINE_USER,
+    user,
   };
 };
+

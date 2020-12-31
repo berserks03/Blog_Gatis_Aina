@@ -1,24 +1,20 @@
-export const SET_LOGIN_STATE = 'SET_LOGIN_STATE';
+export const ADD_ONLINE_USER = 'ADD_ONLINE_USER';
 
-export type LogInType = {
-  isLoggedIn: false;
-  userName: string;
-  userPassword: string;
-  userStatus: string;
+export type LoginUserType = {
+  name: string,
+  online: boolean,
+  status: 'user' | 'admin';
 };
 
 export type InitialState = {
-  isLoggedIn: false;
-  userName: '';
-  userPassword: '';
-  userStatus: '';
+  user: LoginUserType;
 };
 
-export type SetLoginState = {
-  type: typeof SET_LOGIN_STATE;
-  payload: LogInType;
+export type AddOnlineUser = {
+  type: typeof ADD_ONLINE_USER;
+  user: LoginUserType;
 };
 
 export interface AllActions extends InitialState {
-  type: typeof SET_LOGIN_STATE;
+  type: typeof ADD_ONLINE_USER;
 }
