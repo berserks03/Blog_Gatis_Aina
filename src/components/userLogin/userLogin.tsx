@@ -58,8 +58,27 @@ export const UserLogin: FC = () => {
       status: 'user'
     };
 
-    index === -1 ? setWrongInput(true) : dispatch(AddOnlineUser(newUser));
+    if (index === -1) {
+      setWrongInput(true);
+    } else {
+      dispatch(AddOnlineUser(newUser));
+      setWrongInput(false);
+    }
     
+  };
+
+  const noRegistredClickHandler = () => {
+    setIsLogin(!isLogin);
+    setNoUserName(false);
+    setNoUserPassword(false);
+    setWrongInput(false);
+  };
+
+  const registredClickHandler = () => {
+    setIsLogin(!isLogin);
+    setNoUserName(false);
+    setNoUserPassword(false);
+    setWrongInput(false);
   };
 
   return isLogin ? (
@@ -95,7 +114,7 @@ export const UserLogin: FC = () => {
       <Button
         className="UserLogin__button--register"
         text="Click here"
-        onClick={() => setIsLogin(!isLogin)}
+        onClick={noRegistredClickHandler}
       />      
     </div>
   ) : (
@@ -130,7 +149,7 @@ export const UserLogin: FC = () => {
       <Button 
         className="UserLogin__button--register"
         text='Click here'
-        onClick={()=>setIsLogin(!isLogin)}
+        onClick={registredClickHandler}
       />       
     </div>
   );
