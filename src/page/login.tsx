@@ -1,7 +1,25 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { UserLogin } from '../components/userLogin/userLogin';
+import { RootState } from '../store';
 
 const Login: FC = () => {
+
+  const usersArray = useSelector((state: RootState) => {
+    return state.loginReducer.users;
+  });
+
+  console.log('login page users array', usersArray);
+
+  const activeUser = usersArray.find(item => item.online === true);
+  console.log('login page active user', activeUser);
+
+  const name = activeUser?.name;
+  const status = activeUser?.status;
+
+  console.log('active user data: ', name, status);
+
+  
   return (
     <section>
       <div className="container">

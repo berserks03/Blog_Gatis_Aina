@@ -1,21 +1,38 @@
-import { LogInType, SET_LOGIN_STATE, AllActions } from './logInTypes';
+import { LoginUserType, ADD_ONLINE_USER, AllActions } from './logInTypes';
 
-export const initialState: LogInType = {
-  isLoggedIn: false,
-  userName: '',
-  userPassword: '',
-  userStatus: '',
+export const initialState: {users: LoginUserType[]} = {
+  users : [{
+    name: 'gatis',
+    online: false,
+    status: 'admin'
+  },
+  {
+    name: 'aina',
+    online: false,
+    status: 'admin'
+  }]
 };
 
 export const loginReducer = (state = initialState, action: AllActions) => {
   switch (action.type) {
-    // case SET_LOGIN_STATE: {
-    //   return {
-    //     ...state,
-    //     ...action,
-    //     isLoggedIn: true,
-    //   };
-    // }
+    case ADD_ONLINE_USER: {
+      const newUsers = [...state.users];
+      const index = state.users.findIndex((item) =>
+        item.name === action.user.name);
+      if (index !== -1) {
+        newUsers[index].online = true;
+      } else {
+        newUsers.push({
+          name: action.user.name,
+          online: action.user.online,
+          status: action.user.status,
+        });
+      }
+      return {
+        ...state,
+        users: newUsers
+      };
+    }
     default:
       return state;
   }

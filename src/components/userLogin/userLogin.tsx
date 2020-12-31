@@ -1,4 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { AddOnlineUser } from '../../store/logInReducer/logInActions';
+import { LoginUserType } from '../../store/logInReducer/logInTypes';
 import './userLogin.scss';
 import Button from '../button/button';
 
@@ -14,6 +17,7 @@ export const UserLogin: FC = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [noUserName, setNoUserName] = useState(false);
   const [noUserPassword, setNoUserPassword] = useState(false);
+  const [wrongInput, setWrongInput] = useState(false);
 
   useEffect(() => {
     const usersStorage = localStorage.getItem('usersStorage');
@@ -22,6 +26,8 @@ export const UserLogin: FC = () => {
       setUsers(JSON.parse(usersStorage));
     }
   }, []);
+
+  const dispatch = useDispatch();
 
   const registerClickHandler = () => {
     !userName ? setNoUserName(true) : setNoUserName(false);
@@ -41,7 +47,20 @@ export const UserLogin: FC = () => {
     }
   };
 
-  const loginClickHandler = () => {};
+  const loginClickHandler = () => {
+    const index = users.findIndex((item) =>
+      item.name === userName && item.password === userPassword
+    );
+
+    const newUser: LoginUserType = {
+      name: userName,
+      online: true,
+      status: 'user'
+    };
+
+    index === -1 ? setWrongInput(true) : dispatch(AddOnlineUser(newUser));
+    
+  };
 
   return isLogin ? (
     <div className="UserLogin">
@@ -69,6 +88,7 @@ export const UserLogin: FC = () => {
           onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
             setUserPassword(ev.target.value)}
         />
+        {wrongInput? <span className="error-message">Incorrect username or password</span> : ''}
       </div>      
       <Button className="UserLogin__button" text="Login" onClick={loginClickHandler} />
       <span>Not registered?</span>
