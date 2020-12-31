@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { ArticleType } from '../../store/articlesReducer/articlesTypes';
 import { CommentType } from '../../store/commentsReducer/commentsTypes';
+import { RootState } from '../../store';
 import Button from '../button/button';
 import { CommentCard } from '../commentCard/commentCard';
 import { CommentInput } from '../commentInput/commentInput';
@@ -24,6 +26,21 @@ export const BlogArticle: FC<BlogArticleProps> = ({
   blogArray,
   articleComments,
 }) => {
+
+  const [successLogIn, setSuccesslogIn] = useState(false);
+
+  const usersArray = useSelector((state: RootState) => {
+    return state.loginReducer.users;
+  });
+ 
+  const activeUser = usersArray.find((item) => item.online === 'loggedIn');
+
+  useEffect(() => {
+    if (activeUser !== undefined) {
+      setSuccesslogIn(true);
+    }
+  }, [activeUser]);
+
   const history = useHistory();
 
   const backButtonClickHandler = () => {
@@ -116,14 +133,17 @@ export const BlogArticle: FC<BlogArticleProps> = ({
           })}
         </div>
       </div>
-      <div className="row center-xs">
-        <div className="col-xs-12">
-          <CommentInput
-            postId={id}
-            currentCommentArrayLength={articleComments.length}
-          />
+      {successLogIn ? (
+        <div className="row center-xs">
+          <div className="col-xs-12">
+            <CommentInput
+              postId={id}
+              currentCommentArrayLength={articleComments.length}
+            />
+          </div>
         </div>
-      </div>
+      ) : ('') }
+      
     </div>
   );
 };
