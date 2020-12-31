@@ -2,6 +2,7 @@ export const ADD_ONLINE_USER = 'ADD_ONLINE_USER';
 
 export type LoginUserType = {
   name: string,
+  password: string,
   online: boolean,
   status: 'user' | 'admin';
 };
