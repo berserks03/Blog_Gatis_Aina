@@ -5,14 +5,21 @@ import { RootState } from '../store';
 
 const Login: FC = () => {
 
-  const usersOnline = useSelector((state: RootState) => {
+  const usersArray = useSelector((state: RootState) => {
     return state.loginReducer.users;
   });
 
-  console.log('login page', usersOnline);
+  console.log('login page users array', usersArray);
 
-  // const userOnline = usersOnline.find((item) => item.online === true);
+  const activeUser = usersArray.find(item => item.online === true);
+  console.log('login page active user', activeUser);
 
+  const name = activeUser?.name;
+  const status = activeUser?.status;
+
+  console.log('active user data: ', name, status);
+
+  
   return (
     <section>
       <div className="container">

@@ -54,7 +54,7 @@ export const UserLogin: FC = () => {
 
     const newUser: LoginUserType = {
       name: userName,
-      online: false,
+      online: true,
       status: 'user'
     };
 

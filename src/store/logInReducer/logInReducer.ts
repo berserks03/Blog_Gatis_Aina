@@ -2,7 +2,7 @@ import { LoginUserType, ADD_ONLINE_USER, AllActions } from './logInTypes';
 
 export const initialState: {users: LoginUserType[]} = {
   users : [{
-    name: 'gatis555',
+    name: 'gatis',
     online: false,
     status: 'admin'
   },
