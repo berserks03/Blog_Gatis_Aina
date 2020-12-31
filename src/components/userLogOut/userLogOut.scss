@@ -1,0 +1,37 @@
+$white: #ffff;
+$gray: #e8eceb;
+$blue: #8cbdb9;
+$brown: #e09e50;
+$darkBlue: #2d3e4e;
+$shadow: rgba(0, 0, 0, 0.2);
+
+@mixin transition($args...) {
+  transition: $args;
+}
+
+.UserLogOut {
+  padding: 2vw ;
+  border: 25px solid $blue;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;  
+  text-align: left;
+
+  & h2 {
+    text-align: center;
+    margin: 4px auto;
+  }
+
+  & h4 {
+    text-align: left;
+    margin: 4px auto;
+  }
+}
+
+.UserLogOut__button {
+  margin: 15px 0;
+  display: block;
+  width: 100%;
+}
+

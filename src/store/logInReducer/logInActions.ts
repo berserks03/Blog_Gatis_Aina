@@ -8,3 +8,10 @@ export const AddOnlineUser = (user: LoginUserType) => {
   };
 };
 
+export const RemoveOnlineUser = (user: LoginUserType) => {
+  return {
+    type: ADD_ONLINE_USER,
+    user,
+  };
+};
+

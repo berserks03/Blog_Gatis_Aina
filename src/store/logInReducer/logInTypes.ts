@@ -1,10 +1,11 @@
 export const ADD_ONLINE_USER = 'ADD_ONLINE_USER';
+export const REMOVE_ONLINE_USER = 'REMOVE_ONLINE_USER';
 
 export type LoginUserType = {
-  name: string,
-  password: string,
-  online: boolean,
-  status: 'user' | 'admin';
+  name: string | undefined,
+  password: string | undefined,
+  online: 'loggedIn' | 'loggedOut' | undefined,
+  status: 'user' | 'admin' | undefined,
 };
 
 export type InitialState = {
@@ -16,6 +17,11 @@ export type AddOnlineUser = {
   user: LoginUserType;
 };
 
+export type RemoveOnlineUser = {
+  type: typeof REMOVE_ONLINE_USER;
+  user: LoginUserType;
+};
+
 export interface AllActions extends InitialState {
-  type: typeof ADD_ONLINE_USER;
+  type: typeof ADD_ONLINE_USER | typeof REMOVE_ONLINE_USER;
 }

@@ -1,16 +1,16 @@
-import { LoginUserType, ADD_ONLINE_USER, AllActions } from './logInTypes';
+import { LoginUserType, ADD_ONLINE_USER, AllActions, REMOVE_ONLINE_USER } from './logInTypes';
 
 export const initialState: {users: LoginUserType[]} = {
   users : [{
     name: 'gatis',
     password: 'gatis',
-    online: false,
+    online: 'loggedOut',
     status: 'admin'
   },
   {
     name: 'aina',
     password: '12345',
-    online: false,
+    online: 'loggedOut',
     status: 'admin'
   }]
 };
@@ -23,7 +23,7 @@ export const loginReducer = (state = initialState, action: AllActions) => {
         item.name === action.user.name
         && item.password === action.user.password);
       if (index !== -1) {
-        newUsers[index].online = true;
+        newUsers[index].online = action.user.online;
       } else {
         newUsers.push({
           name: action.user.name,
@@ -32,6 +32,17 @@ export const loginReducer = (state = initialState, action: AllActions) => {
           status: action.user.status,
         });
       }
+      return {
+        ...state,
+        users: newUsers
+      };
+    }
+    case REMOVE_ONLINE_USER: {
+      const newUsers = [...state.users];
+      const index = state.users.findIndex((item) =>
+        item.name === action.user.name
+        && item.password === action.user.password);
+      newUsers[index].online = action.user.online;
       return {
         ...state,
         users: newUsers
