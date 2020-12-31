@@ -55,6 +55,10 @@ $shadow: rgba(0, 0, 0, 0.2);
 
 .BigCard__body {
   padding: 0 10px;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .BigCard__footer {
