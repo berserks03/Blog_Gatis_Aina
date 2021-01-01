@@ -31,7 +31,7 @@ export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
           </div>
           <div className="col-xs-12 col-md-9">
             <h3 className="CommentCard__author">
-              {email.split('@')[0].replace(/[\W_]/, ' ')}
+              {email.split('@')[0].replace(/[\W_]/gi, ' ')}
             </h3>
             <p className="CommentCard__title">{name}</p>
             <p className="CommentCard__text">{body.repeat(2)}</p>
