@@ -38,6 +38,7 @@ const Article: FC = () => {
     const randomNumber = Math.floor(Math.random() * 99);
     moreBlogArray.push(blog[randomNumber]);
   }
+  
 
   return (
     <section>

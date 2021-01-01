@@ -5,11 +5,14 @@ import Button from '../button/button';
 type BigCardProps = {
   title: string;
   body: string;
-  author?: string;
   clickHandler: () => void;
 };
 
-export const BigCard: FC<BigCardProps> = ({ title, body, clickHandler }) => {
+export const BigCard: FC<BigCardProps> = ({
+  title,
+  body,
+  clickHandler,
+}) => {
   return (
     <div className="BigCard">
       <div>
@@ -18,7 +21,7 @@ export const BigCard: FC<BigCardProps> = ({ title, body, clickHandler }) => {
         <p className="BigCard__body">{body.toString().substring(0, 90).trim().concat('...')}</p>
       </div>
       <div className="BigCard__footer">
-        <p className="BigCard__author">By: author </p>        
+        <p className="BigCard__author">Author: <b>{body.toString().split(' ')[0].toUpperCase()}</b> </p>        
         <Button className='BigCard__button' onClick={clickHandler} text='Read more' />
       </div>
     </div>

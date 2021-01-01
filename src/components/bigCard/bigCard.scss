@@ -18,7 +18,7 @@ $shadow: rgba(0, 0, 0, 0.2);
   overflow: hidden;
   max-width: 300px;
   min-width: 250px;
-  min-height: 570px;
+  min-height: 580px;
   margin: 10px;
   cursor: pointer;
 
@@ -55,6 +55,10 @@ $shadow: rgba(0, 0, 0, 0.2);
 
 .BigCard__body {
   padding: 0 10px;
+
+  &::first-letter {
+    text-transform: capitalize;
+  }
 }
 
 .BigCard__footer {

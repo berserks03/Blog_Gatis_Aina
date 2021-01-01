@@ -5,6 +5,7 @@ import { RootState } from '../store';
 import { BigCard } from '../components/bigCard/bigCard';
 import { Search } from '../components/search/search';
 import { ArticleType } from '../store/articlesReducer/articlesTypes';
+import banner from '../assets/banner.jpg';
 
 const Home: FC = () => {
   const blog = useSelector((state: RootState) => {
@@ -48,6 +49,13 @@ const Home: FC = () => {
   return (
     <section>
       <div className="container">
+        <div className="row center-xs">
+          <div className="col-xs-12">
+            <h1>Welcome to our blog!</h1>
+            <h2>We have {blog.length} articles at the moment</h2>
+            <img className="home__banner__image" src={banner} alt="blog_photo" />
+          </div>
+        </div>
         <div className="row center-xs margin-bottom--24">
           <div className="col-xs-12">
             <Search
@@ -83,7 +91,7 @@ const Home: FC = () => {
                     </div>
                   ) : (
                     <div>
-                      <h1>
+                      <h1 className="article-not-found">
                         Sorry, article not found. Please try one more time!
                       </h1>
                     </div>

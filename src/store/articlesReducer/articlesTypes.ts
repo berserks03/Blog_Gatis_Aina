@@ -1,5 +1,5 @@
 export const ADD_ARTICLES = 'ADD_ARTICLES';
-export const SEARCH_ARTICLES = 'SEARCH_ARTICLES';
+export const DELETE_ARTICLES = 'DELETE_AETICLES';
 
 export type ArticleType = {
   userId: number;
@@ -11,6 +11,7 @@ export type ArticleType = {
 
 export type InitialState = {
   articles: ArticleType[];
+  id: number;
 };
 
 export type AddArticles = {
@@ -18,6 +19,11 @@ export type AddArticles = {
   articles: ArticleType;
 };
 
+export type DeleteArticles = {
+  type: typeof DELETE_ARTICLES;
+  id: number | undefined;
+};
+
 export interface AllActions extends InitialState {
-  type: typeof ADD_ARTICLES;
+  type: typeof ADD_ARTICLES | typeof DELETE_ARTICLES;
 }
