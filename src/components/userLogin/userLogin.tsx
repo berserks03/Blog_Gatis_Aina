@@ -18,6 +18,7 @@ export const UserLogin: FC = () => {
   const [noUserName, setNoUserName] = useState(false);
   const [noUserPassword, setNoUserPassword] = useState(false);
   const [wrongInput, setWrongInput] = useState(false);
+  const [succeseRegister, setSuccessRegister] = useState(false);
 
   useEffect(() => {
     const usersStorage = localStorage.getItem('usersStorage');
@@ -41,9 +42,13 @@ export const UserLogin: FC = () => {
         },
       ];
       localStorage.setItem('usersStorage', JSON.stringify(newUsers));
+
       setUsers(newUsers);
+
       setUserName('');
       setUserPassword('');
+
+      setSuccessRegister(true);
     }
   };
 
@@ -80,6 +85,7 @@ export const UserLogin: FC = () => {
     setNoUserName(false);
     setNoUserPassword(false);
     setWrongInput(false);
+    setSuccessRegister(false);
   };
 
   return isLogin ? (
@@ -151,7 +157,8 @@ export const UserLogin: FC = () => {
         className="UserLogin__button--register"
         text='Click here'
         onClick={registredClickHandler}
-      />       
+      />  
+      {succeseRegister? <h4>You have successfully registered!</h4> : ''}  
     </div>
   );
 };
