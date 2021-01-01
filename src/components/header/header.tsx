@@ -41,6 +41,7 @@ export const Header: FC = () => {
               tabIndex={0}
               onKeyDown={logoClickHandler}
             >
+
               <img src={logo} alt="" width="100" />
             </div>
           </div>
@@ -61,6 +62,7 @@ export const Header: FC = () => {
                 <h4>Guest</h4>
               </div>
             )}
+
           </div>
         </div>
       </div>
