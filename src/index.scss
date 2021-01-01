@@ -15,6 +15,10 @@ $shadow: rgba(0, 0, 0, 0.2);
   transition: $args;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Nunito', sans-serif;
