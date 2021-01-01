@@ -19,4 +19,33 @@ $shadow: rgba(0, 0, 0, 0.2);
   margin: 0 auto;
   cursor: pointer;
   outline: none;
+  margin: 10px;
+}
+
+.header__login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h4 {
+    margin: 10px;
+  }
+}
+
+.header__user__icon {
+  display: block;
+  width: 20%;
+  object-fit: cover;
+  padding: 5px;
+  border-radius: 50%;
+  background-color: $white;
+  margin: 10px;
+}
+
+.admin {
+  background-color: $brown;
+}
+  
+.user {
+  background-color: $darkBlue;
 }

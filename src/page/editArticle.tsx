@@ -56,17 +56,15 @@ const EditArticle: FC = () => {
           <div className="col-xs-12 center-xs col-sm-12">
             <h3>Change article title:</h3>
             <textarea 
+              className="edit-textarea"
               value={editTitle}
-              rows={1}
-              cols={30}
               onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
                 setEditTitle(ev.target.value)}
             />
             <h3>Change article body:</h3>
             <textarea
+              className="edit-textarea body"
               value={editBody}
-              rows={8}
-              cols={35}
               onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
                 setEditBody(ev.target.value)}
             />
