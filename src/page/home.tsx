@@ -41,7 +41,7 @@ const Home: FC = () => {
   const searchClickHandler = () => {
     let filteredBlogArticles: ArticleType[] = [...blog];
     filteredBlogArticles = filteredBlogArticles.filter((item) => {
-      return item.title.includes(searchWord) || item.body.includes(searchWord);
+      return item.title?.includes(searchWord) || item.body.includes(searchWord);
     });
     setBlogArray(filteredBlogArticles);
   };
@@ -76,6 +76,7 @@ const Home: FC = () => {
                   return (
                     <div key={id}>
                       <BigCard
+                        id={id}
                         title={title}
                         body={body}
                         clickHandler={() => readMoreHandler(id)}

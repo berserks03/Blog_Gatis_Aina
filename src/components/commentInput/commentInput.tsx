@@ -41,7 +41,7 @@ export const CommentInput: FC<CommentInputProps> = ({
 
       const newComment = {
         postId,
-        id: currentCommentArrayLength + 1,
+        id: currentCommentArrayLength? currentCommentArrayLength + 1 : 1,
         name: userTitle,
         email: userEmail,
         body: userComment,

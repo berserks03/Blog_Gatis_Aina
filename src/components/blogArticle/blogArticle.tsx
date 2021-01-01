@@ -28,13 +28,12 @@ export const BlogArticle: FC<BlogArticleProps> = ({
   blogArray,
   articleComments,
 }) => {
-
   const [successLogIn, setSuccesslogIn] = useState(false);
 
   const usersArray = useSelector((state: RootState) => {
     return state.loginReducer.users;
   });
- 
+
   const activeUser = usersArray.find((item) => item.online === 'loggedIn');
 
   useEffect(() => {
@@ -49,7 +48,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
     history.push('/home');
   };
 
-  const readMoreHandler = (ident: number) => {
+  const readMoreHandler = (ident: number | undefined) => {
     history.push(`/articles/${String(ident)}`);
   };
 
@@ -68,6 +67,9 @@ export const BlogArticle: FC<BlogArticleProps> = ({
     }
   };
 
+  const editPostHandler = () => {
+    history.push(`/editArticle/${String(id)}`);
+  };
 
   const date = getRandomDate();
 
@@ -80,9 +82,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
               Article <span className="article__heading__number">#{id}</span>
             </h3>
             <hr className="article__line" />
-            <p className="article__date">
-              {date}
-            </p>
+            <p className="article__date">{date}</p>
           </div>
         </div>
       </div>
@@ -96,24 +96,21 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       </div>
       <div className="row center-xs">
         <div className="col-xs-10 col-md-6">
-          <p className="article__text">{body?.repeat(8)}.</p>
+          <p className="article__text">{body?.concat(' ').repeat(8)}.</p>
         </div>
       </div>
       <div className="row center-xs">
         <div className="col-xs-12">
           <hr className="article__line second" />
-          <Button 
-            className="BigCard__button" 
-            onClick={backButtonClickHandler} 
-            text="Go Back" 
-          />
+          <Button className="BigCard__button" onClick={backButtonClickHandler} text="Go Back" />
           {activeUser?.status === 'admin' ? (
-            <Button 
-              className="BigCard__button" 
-              onClick={deletPostHandler} 
-              text="Delete post" 
-            />
-          ) : ('')}
+            <div>
+              <Button className="BigCard__button" onClick={deletPostHandler} text="Delete article" />
+              <Button className="BigCard__button" onClick={editPostHandler} text="Edit article" />
+            </div>
+          ) : (
+            ''
+          )}
           <hr className="article__line second" />
         </div>
       </div>
@@ -125,16 +122,17 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       <div className="row">
         <div className="col-xs-12">
           <div className="little-card-section">
-            {blogArray && blogArray.map((item) => {
-              return (
-                <div key={item?.id}>
-                  <LittleCard 
-                    title={item?.title} 
-                    clickHandler={() => readMoreHandler(item?.id)} 
-                  />
-                </div>
-              );
-            })}
+            {blogArray &&
+              blogArray.map((item) => {
+                return (
+                  <div key={item?.id}>
+                    <LittleCard
+                      title={item?.title}
+                      clickHandler={() => readMoreHandler(item?.id)}
+                    />
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>
@@ -145,10 +143,18 @@ export const BlogArticle: FC<BlogArticleProps> = ({
       </div>
       <div className="row">
         <div className="col-xs-12">
+          <h2>
+            This article {articleComments.length ? `has ${articleComments.length}` : " hasn't any"}
+            {articleComments.length === 1 ? ' comment' : ' comments'}
+          </h2>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-xs-12">
           {articleComments.map((item) => {
             return (
               <div key={item.id}>
-                <CommentCard 
+                <CommentCard
                   name={item.name}
                   email={item.email}
                   body={item.body}
@@ -169,8 +175,9 @@ export const BlogArticle: FC<BlogArticleProps> = ({
             />
           </div>
         </div>
-      ) : ('') }
-      
+      ) : (
+        ''
+      )}
     </div>
   );
 };
