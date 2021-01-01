@@ -49,7 +49,7 @@ const EditArticle: FC = () => {
       <div className="container">
         <div className="row center-xs">
           <div className="col-xs-12">
-            <h2>You can edit Article No {id}</h2>
+            <h2>You can edit Article № {id}</h2>
           </div>
         </div>
         <div className="row">
