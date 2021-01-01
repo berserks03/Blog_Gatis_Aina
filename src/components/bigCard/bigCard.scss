@@ -53,6 +53,13 @@ $shadow: rgba(0, 0, 0, 0.2);
   padding: 0 10px;
 }
 
+.BigCard__title__number {
+  color: $white;
+  background-color: $brown;
+  padding: 0 5px;
+  border-radius: 3px;
+}
+
 .BigCard__body {
   padding: 0 10px;
 
@@ -64,6 +71,7 @@ $shadow: rgba(0, 0, 0, 0.2);
 .BigCard__footer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 10px;
   padding-top: 15px;
   border-top: 1px solid $brown;

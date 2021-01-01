@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './page/home';
 import Login from './page/login';
 import Articles from './page/articles';
+import EditArticle from './page/editArticle';
 import { Header } from './components/header/header';
 import { getArticles } from './store/articlesReducer/articlesActions';
 import { getComments } from './store/commentsReducer/commentsActions';
@@ -25,6 +26,9 @@ const App: FC = () => {
         </Route>
         <Route path="/articles/:id">
           <Articles />
+        </Route>
+        <Route path="/editarticle/:id">
+          <EditArticle />
         </Route>
         <Route path="/">
           <Home />
