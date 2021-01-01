@@ -20,10 +20,17 @@ body {
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: $darkBlue;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.home__banner__image {
+  width: 100%;
+  border-radius: 3px;
+  box-shadow: 0 0.1875rem 1.5rem $shadow;
 }
 
 .card-section {

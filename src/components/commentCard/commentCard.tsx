@@ -6,10 +6,12 @@ type CommentCardProps = {
   name: string;
   email: string;
   body: string;
+  user: string | undefined;
+  clickHandler: () => void;
 };
 
-export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
-
+export const CommentCard: FC<CommentCardProps> = ({
+  name, email, body, user, clickHandler }) => {
   return (
     <div className="CommentCard">
       <div className="container">
@@ -24,15 +26,16 @@ export const CommentCard: FC<CommentCardProps> = ({ name, email, body }) => {
                 </span>{' '}
                 {email}
               </p>
-              <Button
-                text="follow"
-              />
+              <Button text="follow" />
+              {user === 'admin' ? (
+                <Button className="BigCard__button" onClick={clickHandler} text="Delete comment" />
+              ) : (
+                ''
+              )}
             </div>
           </div>
           <div className="col-xs-12 col-md-9">
-            <h3 className="CommentCard__author">
-              {email.split('@')[0].replace(/[\W_]/gi, ' ')}
-            </h3>
+            <h3 className="CommentCard__author">{email.split('@')[0].replace(/[\W_]/gi, ' ')}</h3>
             <p className="CommentCard__title">{name}</p>
             <p className="CommentCard__text">{body.repeat(2)}</p>
           </div>
