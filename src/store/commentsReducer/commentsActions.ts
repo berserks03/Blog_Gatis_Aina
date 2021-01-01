@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { CommentType, ADD_COMMENTS, ADD_USER_COMMENTS } from './commentsTypes';
+import { CommentType, ADD_COMMENTS, ADD_USER_COMMENTS, DELETE_COMMENTS } from './commentsTypes';
 
 const blogUrl = 'https://jsonplaceholder.typicode.com/comments';
 
@@ -22,5 +22,12 @@ export const getComments = () => {
   return async (dispatch: Dispatch) => {
     const { data } = await axios.get(blogUrl);
     dispatch(AddComments(data));
+  };
+};
+
+export const DeleteComments = (id: number) => {
+  return {
+    type: DELETE_COMMENTS,
+    id,
   };
 };
