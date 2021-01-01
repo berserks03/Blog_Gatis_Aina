@@ -15,15 +15,15 @@ export const Header: FC = () => {
     <header className="header">
       <div className="container">
         <div className="row middle-xs">
-          <div className="col-xs-12 col-md-2">
+          <div className="col-xs-12 col-sm-2 center-xs rigt-sm">
             <div className="logo" role="button" onClick={logoClickHandler} tabIndex={0} onKeyDown={logoClickHandler}>
               <img src={logo} alt="" width="100" />
             </div>
           </div>
-          <div className="col-xs-12 col-md-8">
+          <div className="col-xs-12 col-sm-8">
             <Nav />
           </div>
-          <div className="col-xs-12 col-md-1 col-md-offset-1">
+          <div className="col-xs-12 col-sm-1 center-xs">
             <h4>Login</h4>
           </div>
         </div>
