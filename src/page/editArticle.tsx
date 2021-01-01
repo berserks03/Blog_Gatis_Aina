@@ -49,23 +49,25 @@ const EditArticle: FC = () => {
       <div className="container">
         <div className="row center-xs">
           <div className="col-xs-12">
-            <h2>You can edit Article No {id}</h2>
+            <h2>You can edit Article #{id}</h2>
           </div>
         </div>
         <div className="row">
-          <div className="col-xs-12">
+          <div className="col-xs-12 center-xs col-sm-12">
             <h3>Change article title:</h3>
-            <input
-              type="text"
+            <textarea 
               value={editTitle}
-              onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              rows={1}
+              cols={30}
+              onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
                 setEditTitle(ev.target.value)}
             />
             <h3>Change article body:</h3>
-            <input
-              type="text"
+            <textarea
               value={editBody}
-              onChange={(ev: React.ChangeEvent<HTMLInputElement>): void =>
+              rows={8}
+              cols={35}
+              onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
                 setEditBody(ev.target.value)}
             />
             <div>
@@ -74,7 +76,7 @@ const EditArticle: FC = () => {
             </div>
             {successEdit ? (
               <div>
-                <h2>You have edited article No {articleNum}</h2>
+                <h2>You have edited article #{articleNum}</h2>
                 <Button className="BigCard__button" onClick={backEditHandler} text="Go back to the article" />
               </div>
             ) : ('')}
