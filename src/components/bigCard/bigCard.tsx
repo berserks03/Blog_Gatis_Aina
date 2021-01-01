@@ -16,7 +16,13 @@ export const BigCard: FC<BigCardProps> = ({
   clickHandler,
 }) => {
   return (
-    <div className="BigCard">
+    <div
+      className="BigCard"
+      role="button"
+      onClick={clickHandler}
+      tabIndex={0}
+      onKeyDown={clickHandler}
+    >
       <div>
         <img src="https://picsum.photos/300" alt={title} className="BigCard__image" />
         <h3 className="BigCard__title"> <span className="BigCard__title__number">#{id}</span> {title?.toString().split(' ').splice(1, 5).join(' ')}</h3>
@@ -24,7 +30,7 @@ export const BigCard: FC<BigCardProps> = ({
       </div>
       <div className="BigCard__footer">
         <p className="BigCard__author">By <b>{body?.toString().split(' ')[0].toUpperCase()}</b> </p>        
-        <Button className='BigCard__button' onClick={clickHandler} text='Read more' />
+        <Button className='BigCard__button' text='Read more' />
       </div>
     </div>
   );
