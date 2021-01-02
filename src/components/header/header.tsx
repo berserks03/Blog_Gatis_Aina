@@ -41,7 +41,6 @@ export const Header: FC = () => {
               tabIndex={0}
               onKeyDown={logoClickHandler}
             >
-
               <img src={logo} alt="" width="100" />
             </div>
           </div>
