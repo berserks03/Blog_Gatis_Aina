@@ -15,8 +15,6 @@ const Login: FC = () => {
 
   const dispatch = useDispatch();
 
-  console.log('login page users array', usersArray);
-
   const activeUser = usersArray.find((item) => item.online === 'loggedIn');
 
   useEffect(() => {
@@ -25,13 +23,9 @@ const Login: FC = () => {
     }
   }, [activeUser]);
 
-  console.log('login page active user', activeUser);
-
   const name = activeUser?.name;
   const password = activeUser?.password;
   const status = activeUser?.status;
-
-  console.log('active user data: ', name, status);
 
   const logOutClickHandler = () => {
     const newUser: LoginUserType = {
