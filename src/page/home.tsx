@@ -6,7 +6,6 @@ import { BigCard } from '../components/bigCard/bigCard';
 import { Search } from '../components/search/search';
 import { ArticleType } from '../store/articlesReducer/articlesTypes';
 import banner from '../assets/banner.jpg';
-import ToTop from '../components/toTop/toTop';
 
 const Home: FC = () => {
   const blog = useSelector((state: RootState) => {
@@ -101,7 +100,6 @@ const Home: FC = () => {
                 </div>
               )}
             </div>
-            <ToTop />
           </div>
         </div>
       </div>
