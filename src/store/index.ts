@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
-import { articlesArray } from './articlesReducer/articlesReducer';
-import { commentsArray } from './commentsReducer/commentsReducer';
+import { articlesReducer } from './articlesReducer/articlesReducer';
+import { commentsReducer } from './commentsReducer/commentsReducer';
 import { loginReducer } from './logInReducer/logInReducer';
 
 export const rootReducer = combineReducers({
-  articlesArray,
-  commentsArray,
-  loginReducer
+  articlesArray: articlesReducer,
+  commentsArray: commentsReducer,
+  loginState: loginReducer,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

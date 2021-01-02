@@ -10,12 +10,14 @@ const Login: FC = () => {
   const [successLogIn, setSuccesslogIn] = useState(false);
 
   const usersArray = useSelector((state: RootState) => {
-    return state.loginReducer.users;
+    return state.loginState.users;
   });
 
   const dispatch = useDispatch();
 
-  const activeUser = usersArray.find((item) => item.online === 'loggedIn');
+  const activeUser = usersArray.filter((item) => item.online === 'loggedIn')[0];
+
+  const { name, password, status } = activeUser;
 
   useEffect(() => {
     if (activeUser !== undefined) {
@@ -23,10 +25,7 @@ const Login: FC = () => {
     }
   }, [activeUser]);
 
-  const name = activeUser?.name;
-  const password = activeUser?.password;
-  const status = activeUser?.status;
-
+  
   const logOutClickHandler = () => {
     const newUser: LoginUserType = {
       name,

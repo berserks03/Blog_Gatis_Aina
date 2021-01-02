@@ -45,13 +45,13 @@ const Article: FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-xs-12">
-            <BlogArticle
-              id={article?.id}
-              title={article?.title}
-              body={article?.body}
+            {article && <BlogArticle
+              id={article.id}
+              title={article.title}
+              body={article.body}
               blogArray={moreBlogArray}
               articleComments={articleComments}
-            />
+            />}
           </div>
         </div>
       </div>

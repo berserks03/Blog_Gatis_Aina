@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
-import { ArticleType, ADD_ARTICLES, DELETE_ARTICLES, EDIT_ARTICLES } from './articlesTypes';
+import { ArticleType, ADD_ARTICLES, DELETE_ARTICLE, EDIT_ARTICLE, AllActions } from './articlesTypes';
 
 const blogUrl = 'https://jsonplaceholder.typicode.com/posts';
 
-const AddArticles = (articles: ArticleType[]) => {
+const AddArticles = (articles: ArticleType[]): AllActions => {
   return {
     type: ADD_ARTICLES,
-    articles,
+    payload: { articles },
   };
 };
 
@@ -18,18 +18,16 @@ export const getArticles = () => {
   };
 };
 
-export const DeleteArticles = (id: number) => {
+export const DeleteArticle = (id: number): AllActions => {
   return {
-    type: DELETE_ARTICLES,
-    id,
+    type: DELETE_ARTICLE,
+    payload: { id },
   };
 };
 
-export const EditPost = (id: number, title: string | undefined, body: string | undefined) => {
+export const EditPost = (article: ArticleType): AllActions => {
   return {
-    type: EDIT_ARTICLES,
-    id,
-    title, 
-    body,
+    type: EDIT_ARTICLE,
+    payload: { article },
   };
 };

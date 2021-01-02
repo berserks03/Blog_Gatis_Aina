@@ -6,7 +6,7 @@ type CommentCardProps = {
   name: string;
   email: string;
   body: string;
-  user: string | undefined;
+  user: string;
   clickHandler: () => void;
 };
 

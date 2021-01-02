@@ -20,17 +20,12 @@ export const loginReducer = (state = initialState, action: AllActions) => {
     case ADD_ONLINE_USER: {
       const newUsers = [...state.users];
       const index = state.users.findIndex((item) =>
-        item.name === action.user.name
-        && item.password === action.user.password);
+        item.name === action.payload.user.name
+        && item.password === action.payload.user.password);
       if (index !== -1) {
-        newUsers[index].online = action.user.online;
+        newUsers[index].online = action.payload.user.online;
       } else {
-        newUsers.push({
-          name: action.user.name,
-          password: action.user.password,
-          online: action.user.online,
-          status: action.user.status,
-        });
+        newUsers.push(action.payload.user);
       }
       return {
         ...state,
@@ -40,9 +35,9 @@ export const loginReducer = (state = initialState, action: AllActions) => {
     case REMOVE_ONLINE_USER: {
       const newUsers = [...state.users];
       const index = state.users.findIndex((item) =>
-        item.name === action.user.name
-        && item.password === action.user.password);
-      newUsers[index].online = action.user.online;
+        item.name === action.payload.user.name
+        && item.password === action.payload.user.password);
+      newUsers[index].online = action.payload.user.online;
       return {
         ...state,
         users: newUsers

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import './littleCard.scss';
 
 type LittleCardProps = {
-  title: string | undefined;
+  title: string;
   clickHandler: () => void;
 };
 

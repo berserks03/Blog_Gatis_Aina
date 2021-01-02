@@ -1,37 +1,35 @@
 export const ADD_ARTICLES = 'ADD_ARTICLES';
-export const DELETE_ARTICLES = 'DELETE_AETICLES';
-export const EDIT_ARTICLES = 'EDIT_ARTICLES';
+export const DELETE_ARTICLE = 'DELETE_AETICLE';
+export const EDIT_ARTICLE = 'EDIT_ARTICLE';
 
 export type ArticleType = {
   userId: number;
   id: number;
-  title: string | undefined;
+  title: string;
   body: string;
 };
 
 
-export type InitialState = {
-  articles: ArticleType[];
-  id: number;
-  title: string,
-  body: string,
-};
+// export type InitialState = {
+//   articles: ArticleType[];
+//   id: number;
+//   title: string,
+//   body: string,
+// };
 
 export type AddArticles = {
   type: typeof ADD_ARTICLES;
-  articles: ArticleType;
+  payload: { articles: ArticleType[] };
 };
 
-export type DeleteArticles = {
-  type: typeof DELETE_ARTICLES;
-  id: number | undefined;
+export type DeleteArticle = {
+  type: typeof DELETE_ARTICLE;
+  payload: { id: number };
 };
 
-export type EditArticles = {
-  type: typeof EDIT_ARTICLES;
-  article: ArticleType;
+export type EditArticle = {
+  type: typeof EDIT_ARTICLE;
+  payload: { article: ArticleType };
 };
 
-export interface AllActions extends InitialState {
-  type: typeof ADD_ARTICLES | typeof DELETE_ARTICLES | typeof EDIT_ARTICLES;
-}
+export type AllActions = AddArticles | DeleteArticle | EditArticle;

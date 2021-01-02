@@ -5,7 +5,7 @@ import { AddUserComments } from '../../store/commentsReducer/commentsActions';
 import './commentInput.scss';
 
 type CommentInputProps = {
-  postId: number | undefined;
+  postId: number;
   currentCommentArrayLength: number;
 };
 

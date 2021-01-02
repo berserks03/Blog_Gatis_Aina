@@ -72,7 +72,7 @@ const Home: FC = () => {
           <div className="col-xs-12">
             <div className="card-section">
               {blogArray && blogArray.length > 0 ? (
-                blogArray?.map(({ id, title, body }) => {
+                blogArray.map(({ id, title, body }) => {
                   return (
                     <div key={id}>
                       <BigCard

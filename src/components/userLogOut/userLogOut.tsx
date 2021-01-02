@@ -3,8 +3,8 @@ import './userLogOut.scss';
 import Button from '../button/button';
 
 type LogOutType = {
-  name: string | undefined;
-  status: string | undefined;
+  name: string;
+  status: string;
   clickHandler: () => void;
 };
 

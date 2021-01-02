@@ -1,17 +1,17 @@
-import { LoginUserType, ADD_ONLINE_USER, REMOVE_ONLINE_USER } from './logInTypes';
+import { LoginUserType, ADD_ONLINE_USER, REMOVE_ONLINE_USER, AllActions } from './logInTypes';
 
 
-export const AddOnlineUser = (user: LoginUserType) => {
+export const AddOnlineUser = (user: LoginUserType): AllActions => {
   return {
     type: ADD_ONLINE_USER,
-    user,
+    payload: { user },
   };
 };
 
-export const RemoveOnlineUser = (user: LoginUserType) => {
+export const RemoveOnlineUser = (user: LoginUserType): AllActions => {
   return {
     type: REMOVE_ONLINE_USER,
-    user,
+    payload: { user },
   };
 };
 

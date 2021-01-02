@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { EditPost } from '../store/articlesReducer/articlesActions';
 import Button from '../components/button/button';
+import { ArticleType } from '../store/articlesReducer/articlesTypes';
 
 const EditArticle: FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -21,13 +22,11 @@ const EditArticle: FC = () => {
 
   const articleNum: number = Number(id);
 
-  const article = blog.find((item) => item.id === articleNum);
+  const article = blog.filter((item) => item.id === articleNum)[0];
 
-  const articleTitle = article?.title;
-  const articleBody = article?.body;
 
-  const [editTitle, setEditTitle] = useState(articleTitle);
-  const [editBody, setEditBody] = useState(articleBody);
+  const [editTitle, setEditTitle] = useState(article.title);
+  const [editBody, setEditBody] = useState(article.body);
   const [successEdit, setSuccessEdit] = useState(false);
 
   const backEditHandler = () => {
@@ -35,12 +34,14 @@ const EditArticle: FC = () => {
   };
 
   const saveEditHandler = () => {
+    const newArticle = {
+      userId: Number(id),
+      id: articleNum,
+      title: editTitle,
+      body: editBody,
+    };
 
-    const ident = articleNum;
-    const title = editTitle;
-    const body = editBody;
-    
-    dispatch(EditPost(ident, title, body));
+    dispatch(EditPost(newArticle));
     setSuccessEdit(true);
   };
 
@@ -55,7 +56,7 @@ const EditArticle: FC = () => {
         <div className="row">
           <div className="col-xs-12 center-xs col-sm-12">
             <h3>Change article title:</h3>
-            <textarea 
+            <textarea
               className="edit-textarea"
               value={editTitle}
               onChange={(ev: React.ChangeEvent<HTMLTextAreaElement>): void =>
@@ -75,9 +76,15 @@ const EditArticle: FC = () => {
             {successEdit ? (
               <div>
                 <h2>You have edited article #{articleNum}</h2>
-                <Button className="BigCard__button" onClick={backEditHandler} text="Go back to the article" />
+                <Button
+                  className="BigCard__button"
+                  onClick={backEditHandler}
+                  text="Go back to the article"
+                />
               </div>
-            ) : ('')}
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>

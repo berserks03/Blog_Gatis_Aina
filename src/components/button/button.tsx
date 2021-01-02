@@ -4,7 +4,7 @@ import './button.scss';
 type ButtonProps = {
   className?: string;
   onClick?: () => void;
-  text?: string|(() => void)
+  text?: string;
 };
 
 const Button:FC<ButtonProps> = ({ className, onClick, text }) => {

@@ -1,27 +1,29 @@
-import { CommentType, ADD_COMMENTS, ADD_USER_COMMENTS, DELETE_COMMENTS, AllActions } from './commentsTypes';
+import { CommentType, ADD_COMMENTS, ADD_USER_COMMENT, DELETE_COMMENT, AllActions } from './commentsTypes';
 
 export const initialState: { comments: CommentType[] } = {
   comments: [],
 };
 
-export const commentsArray = (state = initialState, action: AllActions) => {
+export const commentsReducer = (state = initialState, action: AllActions) => {
   switch (action.type) {
     case ADD_COMMENTS: {
       return {
         ...state,
-        comments: action.comments,
+        comments: action.payload.comments,
       };
     }
-    case ADD_USER_COMMENTS: {
+    case ADD_USER_COMMENT: {
+      const newComments = [...state.comments];
+      newComments.push(action.payload.comment);
       return {
         ...state,
-        comments: state.comments.concat(action.comments),
+        comments: newComments,
       };
     }
-    case DELETE_COMMENTS: {
+    case DELETE_COMMENT: {
       const newComments = [...state.comments];
       const index = state.comments.findIndex((item) => 
-        item.id === action.id);
+        item.id === action.payload.id);
       newComments.splice(index, 1);
       return {
         ...state,

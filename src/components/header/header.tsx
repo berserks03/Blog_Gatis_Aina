@@ -16,10 +16,11 @@ export const Header: FC = () => {
   };
 
   const usersArray = useSelector((state: RootState) => {
-    return state.loginReducer.users;
+    return state.loginState.users;
   });
 
   const activeUser = usersArray.find((item) => item.online === 'loggedIn');
+  
   const name = activeUser?.name;
   const status = activeUser?.status;
 

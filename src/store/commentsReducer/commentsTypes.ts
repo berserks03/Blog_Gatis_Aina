@@ -1,35 +1,34 @@
 export const ADD_COMMENTS = 'ADD_COMMENTS';
-export const ADD_USER_COMMENTS = 'ADD_USER_COMMENTS';
-export const DELETE_COMMENTS = 'DELETE_COMMENTS';
+export const ADD_USER_COMMENT = 'ADD_USER_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
 
 export type CommentType = {
-  postId: number | undefined;
+  postId: number;
   id: number;
   name: string;
   email: string;
   body: string;
 };
 
-export type InitialState = {
-  comments: CommentType[];
-  id: number;
-};
+// export type InitialState = {
+//   comments: CommentType[];
+//   comment: CommentType[];
+//   id: number;
+// };
 
 export type AddComments = {
   type: typeof ADD_COMMENTS;
-  comments: CommentType;
+  payload: { comments: CommentType[] };
 };
 
-export type AddUserComments = {
-  type: typeof ADD_USER_COMMENTS;
-  comments: CommentType;
+export type AddUserComment = {
+  type: typeof ADD_USER_COMMENT;
+  payload: { comment: CommentType };
 };
 
-export type DeletComments = {
-  type: typeof DELETE_COMMENTS;
-  id: number | undefined;
+export type DeleteComment = {
+  type: typeof DELETE_COMMENT;
+  payload: { id: number };
 };
 
-export interface AllActions extends InitialState {
-  type: typeof ADD_COMMENTS | typeof ADD_USER_COMMENTS | typeof DELETE_COMMENTS;
-}
+export type AllActions = AddComments | AddUserComment | DeleteComment;

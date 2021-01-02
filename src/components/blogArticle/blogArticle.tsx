@@ -10,13 +10,13 @@ import { CommentInput } from '../commentInput/commentInput';
 import { LittleCard } from '../littleCard/littleCard';
 import { getRandomDate } from '../../helperFunctions/dateHelper';
 import './blogArticle.scss';
-import { DeleteArticles } from '../../store/articlesReducer/articlesActions';
-import { DeleteComments } from '../../store/commentsReducer/commentsActions';
+import { DeleteArticle } from '../../store/articlesReducer/articlesActions';
+import { DeleteComment } from '../../store/commentsReducer/commentsActions';
 
 type BlogArticleProps = {
-  id: number | undefined;
-  title: string | undefined;
-  body: string | undefined;
+  id: number;
+  title: string;
+  body: string;
   blogArray: ArticleType[];
   articleComments: CommentType[];
 };
@@ -31,10 +31,10 @@ export const BlogArticle: FC<BlogArticleProps> = ({
   const [successLogIn, setSuccesslogIn] = useState(false);
 
   const usersArray = useSelector((state: RootState) => {
-    return state.loginReducer.users;
+    return state.loginState.users;
   });
 
-  const activeUser = usersArray.find((item) => item.online === 'loggedIn');
+  const activeUser = usersArray.filter((item) => item.online === 'loggedIn')[0];
 
   useEffect(() => {
     if (activeUser !== undefined) {
@@ -48,7 +48,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
     history.push('/home');
   };
 
-  const readMoreHandler = (ident: number | undefined) => {
+  const readMoreHandler = (ident: number) => {
     history.push(`/articles/${String(ident)}`);
   };
 
@@ -56,14 +56,14 @@ export const BlogArticle: FC<BlogArticleProps> = ({
 
   const deletPostHandler = () => {
     if (id) {
-      dispatch(DeleteArticles(id));
+      dispatch(DeleteArticle(id));
     }
     history.push('/home');
   };
 
   const deleteCommentHandler = (commentId: number) => {
     if (commentId) {
-      dispatch(DeleteComments(commentId));
+      dispatch(DeleteComment(commentId));
     }
   };
 
@@ -125,9 +125,9 @@ export const BlogArticle: FC<BlogArticleProps> = ({
             {blogArray &&
               blogArray.map((item) => {
                 return (
-                  <div key={item?.id}>
+                  <div key={item.id}>
                     <LittleCard
-                      title={item?.title}
+                      title={item.title}
                       clickHandler={() => readMoreHandler(item?.id)}
                     />
                   </div>
@@ -158,7 +158,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
                   name={item.name}
                   email={item.email}
                   body={item.body}
-                  user={activeUser?.status}
+                  user={activeUser.status}
                   clickHandler={() => deleteCommentHandler(item.id)}
                 />
               </div>
