@@ -24,7 +24,7 @@ export const BigCard: FC<BigCardProps> = ({
       onKeyDown={clickHandler}
     >
       <div>
-        <img src="https://picsum.photos/300" alt={title} className="BigCard__image" />
+        <img src={`https://picsum.photos/id/${id}/300`} alt={title} className="BigCard__image" />
         <h3 className="BigCard__title"> <span className="BigCard__title__number">#{id}</span> {title.split(' ').splice(1, 5).join(' ')}</h3>
         <p className="BigCard__body">{body.substring(0, 90).trim().concat('...')}</p>
       </div>

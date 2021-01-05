@@ -91,7 +91,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
           <div>
             <h1 className="article__title">{title}</h1>
           </div>
-          <img className="article__image" src="https://picsum.photos/800/300" alt="" />
+          <img className="article__image" src={`https://picsum.photos/id/${id}/800/300`} alt="" />
         </div>
       </div>
       <div className="row center-xs">
@@ -128,6 +128,7 @@ export const BlogArticle: FC<BlogArticleProps> = ({
                   <div key={item.id}>
                     <LittleCard
                       title={item.title}
+                      id={item.id}
                       clickHandler={() => readMoreHandler(item?.id)}
                     />
                   </div>
@@ -149,23 +150,24 @@ export const BlogArticle: FC<BlogArticleProps> = ({
           </h2>
         </div>
       </div>
-      <div className="row">
-        <div className="col-xs-12">
-          {articleComments.map((item) => {
-            return (
-              <div key={item.id}>
-                <CommentCard
-                  name={item.name}
-                  email={item.email}
-                  body={item.body}
-                  user={activeUser.status}
-                  clickHandler={() => deleteCommentHandler(item.id)}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      {activeUser &&
+        <div className="row">
+          <div className="col-xs-12">
+            {articleComments && articleComments.map((item) => {
+              return (
+                <div key={item.id}>
+                  <CommentCard
+                    name={item.name}
+                    email={item.email}
+                    body={item.body}
+                    user={activeUser.status}
+                    clickHandler={() => deleteCommentHandler(item.id)}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>}
       {successLogIn ? (
         <div className="row center-xs">
           <div className="col-xs-12">

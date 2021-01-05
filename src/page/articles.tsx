@@ -45,7 +45,7 @@ const Article: FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-xs-12">
-            {article && <BlogArticle
+            {articleComments && article && <BlogArticle
               id={article.id}
               title={article.title}
               body={article.body}
